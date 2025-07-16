@@ -1,0 +1,57 @@
+# Ignore Python bytecode
+__pycache__/
+*.py[cod]
+*.so
+
+# Ignore virtual environments
+venv/
+env/
+.venv/
+backend/venv311/
+
+# Ignore packages
+*.egg
+*.egg-info/
+dist/
+build/
+*.whl
+
+# Ignore logs and environment files
+*.log
+*.env
+.env.*
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore IDE settings
+.vscode/
+.idea/
+
+# Ignore Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Ignore PyTorch or large model files
+*.pt
+*.pth
+*.ckpt
+*.onnx
+
+# Ignore compiled binaries
+*.dll
+*.lib
+*.exe
+*.pyd
+
+# Ignore GitHub-specific
+.gitattributes
+.gitmodules
+
+# Ignore test coverage
+.coverage
+htmlcov/
+coverage.xml
+
+# Ignore pytest cache
+.pytest_cache/

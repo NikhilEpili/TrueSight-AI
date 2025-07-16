@@ -1,13 +1,13 @@
 from fastapi import APIRouter, UploadFile, File, HTTPException, Form
 from typing import Optional
-from ...core.logger import logger
-from ...services.detection import (
+from app.core.logger import logger
+from app.services.detection import (
     analyze_image,
     analyze_video,
     analyze_audio,
     analyze_url
 )
-from ...core.config import settings
+from app.core.config import settings
 
 router = APIRouter()
 

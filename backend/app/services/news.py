@@ -3,7 +3,7 @@ import torch
 import aiohttp
 from bs4 import BeautifulSoup
 from typing import Optional, Dict, List
-from ...core.logger import logger
+from app.core.logger import logger
 import numpy as np
 
 # Initialize models

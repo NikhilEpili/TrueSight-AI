@@ -4,9 +4,9 @@ import numpy as np
 from PIL import Image
 import cv2
 import librosa
-from transformers import AutoFeatureExtractor, AutoModelForImageClassification
-from ...core.logger import logger
-from ...core.config import settings
+from transformers import AutoImageProcessor, AutoFeatureExtractor, AutoModelForImageClassification
+from app.core.logger import logger
+from app.core.config import settings
 import os
 import aiohttp
 import tempfile
@@ -33,12 +33,13 @@ async def load_models():
     # Load video model (Swin)
     try:
         video_model = AutoModelForImageClassification.from_pretrained(
-            "microsoft/swin-base-patch4-window7-224",
-            num_labels=2  # Real vs Fake
+            "microsoft/swin-base-patch4-window7-224"
+            # Do NOT set num_labels=2, use default head
         )
         video_model.eval()
     except Exception as e:
         logger.error(f"Error loading video model: {str(e)}")
+        video_model = None
     
     # Load audio model (Wav2Vec 2.0)
     try:
@@ -49,6 +50,7 @@ async def load_models():
         audio_model.eval()
     except Exception as e:
         logger.error(f"Error loading audio model: {str(e)}")
+        audio_model = None
 
 async def analyze_image(file: UploadFile, model: str = "default") -> dict:
     """
@@ -65,8 +67,8 @@ async def analyze_image(file: UploadFile, model: str = "default") -> dict:
     if image.mode != "RGB":
         image = image.convert("RGB")
     
-    # Preprocess for model
-    feature_extractor = AutoFeatureExtractor.from_pretrained("facebook/dinov2-base")
+    # Preprocess for model (DINOv2)
+    feature_extractor = AutoImageProcessor.from_pretrained("facebook/dinov2-base")
     inputs = feature_extractor(images=image, return_tensors="pt")
     
     # Get prediction
@@ -91,7 +93,7 @@ async def analyze_video(file: UploadFile, model: str = "default") -> dict:
     Analyze a video file for potential deepfake manipulation.
     """
     if video_model is None:
-        await load_models()
+        raise Exception("Video model not loaded. Check logs for details.")
     
     # Save video to temporary file
     with tempfile.NamedTemporaryFile(delete=False, suffix=".mp4") as temp_file:
@@ -116,7 +118,7 @@ async def analyze_video(file: UploadFile, model: str = "default") -> dict:
             frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
             frame_pil = Image.fromarray(frame_rgb)
             
-            # Preprocess frame
+            # Preprocess frame (Swin)
             feature_extractor = AutoFeatureExtractor.from_pretrained(
                 "microsoft/swin-base-patch4-window7-224"
             )
@@ -150,7 +152,7 @@ async def analyze_audio(file: UploadFile, model: str = "default") -> dict:
     Analyze an audio file for potential deepfake manipulation.
     """
     if audio_model is None:
-        await load_models()
+        raise Exception("Audio model not loaded. Check logs for details.")
     
     # Save audio to temporary file
     with tempfile.NamedTemporaryFile(delete=False, suffix=".wav") as temp_file:

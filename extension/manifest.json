@@ -1,12 +1,14 @@
 {
   "manifest_version": 3,
-  "name": "TrueSight AI",
-  "version": "1.0.0",
-  "description": "Detect deepfakes and misinformation in real-time while browsing",
+  "name": "TrueSight Verifier",
+  "version": "1.0",
+  "description": "Verify text, images, and URLs for misinformation using TrueSight-AI.",
   "permissions": [
     "contextMenus",
     "activeTab",
-    "storage"
+    "scripting",
+    "storage",
+    "notifications"
   ],
   "host_permissions": [
     "http://localhost:8000/*"
@@ -21,18 +23,9 @@
     }
   ],
   "action": {
-    "default_popup": "popup.html",
-    "default_icon": {
-      "16": "icons/icon16.png",
-      "32": "icons/icon32.png",
-      "48": "icons/icon48.png",
-      "128": "icons/icon128.png"
-    }
+    "default_popup": "popup.html"
   },
   "icons": {
-    "16": "icons/icon16.png",
-    "32": "icons/icon32.png",
-    "48": "icons/icon48.png",
-    "128": "icons/icon128.png"
+    "128": "icon128.png"
   }
 }

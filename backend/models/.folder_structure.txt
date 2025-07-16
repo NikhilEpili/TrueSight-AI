@@ -1,0 +1,2 @@
+# This file is a placeholder to ensure the dataset folder structure exists.
+# Place your images in the appropriate folders for fine-tuning. 
