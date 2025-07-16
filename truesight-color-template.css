@@ -1,0 +1,164 @@
+/* TrueSight.Ai Color Template */
+
+:root {
+  /* Background Colors */
+  --primary-bg: #0a0b1e;           /* Very dark blue-black background */
+  --secondary-bg: #1a1b2e;        /* Slightly lighter dark blue */
+  --surface-bg: #2a2b3e;          /* Surface/card background */
+  
+  /* Text Colors */
+  --text-primary: #ffffff;         /* Primary white text */
+  --text-secondary: #b8b9c7;      /* Secondary light gray text */
+  --text-muted: #8a8b98;          /* Muted gray text */
+  
+  /* Brand/Accent Colors - Purple Gradient */
+  --brand-primary: #8b5cf6;       /* Primary purple */
+  --brand-secondary: #a855f7;     /* Secondary purple */
+  --brand-light: #c084fc;         /* Light purple */
+  --brand-dark: #7c3aed;          /* Dark purple */
+  
+  /* Gradient Definitions */
+  --brand-gradient: linear-gradient(135deg, #c084fc 0%, #8b5cf6 50%, #7c3aed 100%);
+  --brand-gradient-horizontal: linear-gradient(90deg, #c084fc 0%, #8b5cf6 50%, #7c3aed 100%);
+  --brand-gradient-text: linear-gradient(135deg, #e879f9 0%, #c084fc 25%, #a855f7 50%, #8b5cf6 75%, #7c3aed 100%);
+  
+  /* Border Colors */
+  --border-primary: #3a3b4e;      /* Primary border color */
+  --border-secondary: #4a4b5e;    /* Secondary border color */
+  --border-accent: var(--brand-primary); /* Accent border using brand color */
+  
+  /* Shadow Colors */
+  --shadow-primary: rgba(0, 0, 0, 0.3);
+  --shadow-brand: rgba(139, 92, 246, 0.2);
+  
+  /* Interactive States */
+  --hover-bg: rgba(139, 92, 246, 0.1);
+  --active-bg: rgba(139, 92, 246, 0.2);
+  --focus-ring: rgba(139, 92, 246, 0.4);
+}
+
+/* Color Classes for Easy Application */
+
+/* Background Classes */
+.bg-primary { background-color: var(--primary-bg); }
+.bg-secondary { background-color: var(--secondary-bg); }
+.bg-surface { background-color: var(--surface-bg); }
+.bg-brand-gradient { background: var(--brand-gradient); }
+
+/* Text Classes */
+.text-primary { color: var(--text-primary); }
+.text-secondary { color: var(--text-secondary); }
+.text-muted { color: var(--text-muted); }
+.text-brand { color: var(--brand-primary); }
+.text-brand-gradient { 
+  background: var(--brand-gradient-text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Border Classes */
+.border-primary { border-color: var(--border-primary); }
+.border-brand { border-color: var(--brand-primary); }
+
+/* Example Usage for TrueSight.Ai Style Elements */
+
+/* Header/Navigation */
+.navbar {
+  background-color: var(--primary-bg);
+  border-bottom: 1px solid var(--border-primary);
+}
+
+.navbar .brand {
+  background: var(--brand-gradient-text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: bold;
+}
+
+.navbar .nav-link {
+  color: var(--text-primary);
+  transition: color 0.3s ease;
+}
+
+.navbar .nav-link:hover {
+  color: var(--brand-light);
+}
+
+/* Hero Section */
+.hero {
+  background: var(--primary-bg);
+  color: var(--text-primary);
+}
+
+.hero-title {
+  background: var(--brand-gradient-text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+}
+
+.hero-description {
+  color: var(--text-secondary);
+}
+
+/* Buttons */
+.btn-primary {
+  background: var(--brand-gradient);
+  border: none;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px var(--shadow-brand);
+}
+
+.btn-outline {
+  background: transparent;
+  border: 2px solid var(--brand-primary);
+  color: var(--brand-primary);
+  transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+  background: var(--brand-primary);
+  color: white;
+}
+
+/* Cards/Surfaces */
+.card {
+  background-color: var(--surface-bg);
+  border: 1px solid var(--border-primary);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px var(--shadow-primary);
+}
+
+.card:hover {
+  border-color: var(--brand-primary);
+  box-shadow: 0 8px 40px var(--shadow-brand);
+}
+
+/* Scroll Indicator */
+.scroll-indicator {
+  color: var(--brand-primary);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* Responsive Design Considerations */
+@media (prefers-color-scheme: light) {
+  /* Optional: Provide light theme alternatives if needed */
+  .light-theme {
+    --primary-bg: #ffffff;
+    --text-primary: #1a1b2e;
+    /* Add other light theme overrides as needed */
+  }
+}

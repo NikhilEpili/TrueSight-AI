@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TrueSight.Ai - Color Template Demo</title>
+    <link rel="stylesheet" href="truesight-color-template.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            background: var(--primary-bg);
+            color: var(--text-primary);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        .header {
+            padding: 1rem 0;
+            background: var(--primary-bg);
+            border-bottom: 1px solid var(--border-primary);
+        }
+        
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: var(--brand-gradient-text);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-link {
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: var(--brand-light);
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 6rem 0;
+            text-align: center;
+            background: var(--primary-bg);
+        }
+        
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            background: var(--brand-gradient-text);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .hero-description {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 900px;
+            margin: 2rem auto;
+            line-height: 1.8;
+        }
+        
+        .scroll-hint {
+            margin-top: 4rem;
+            color: var(--brand-primary);
+            font-size: 0.9rem;
+            animation: pulse 2s infinite;
+        }
+        
+        .arrow-down {
+            display: inline-block;
+            margin-top: 0.5rem;
+            font-size: 1.2rem;
+        }
+        
+        /* Buttons */
+        .btn {
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 500;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+        
+        .btn-primary {
+            background: var(--brand-gradient);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px var(--shadow-brand);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--brand-primary);
+            color: var(--brand-primary);
+        }
+        
+        .btn-outline:hover {
+            background: var(--brand-primary);
+            color: white;
+        }
+        
+        /* Color Palette Display */
+        .color-palette {
+            padding: 4rem 0;
+            background: var(--secondary-bg);
+        }
+        
+        .palette-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .color-card {
+            background: var(--surface-bg);
+            border: 1px solid var(--border-primary);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .color-card:hover {
+            border-color: var(--brand-primary);
+            transform: translateY(-4px);
+        }
+        
+        .color-swatch {
+            width: 100%;
+            height: 60px;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+        
+        .color-name {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .color-value {
+            font-family: 'Monaco', 'Consolas', monospace;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .nav-links {
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <div class="logo">TrueSight.Ai</div>
+                <ul class="nav-links">
+                    <li><a href="#" class="nav-link">Home</a></li>
+                    <li><a href="#" class="nav-link">About</a></li>
+                    <li><a href="#" class="nav-link">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1 class="hero-title">Welcome to TrueSight.Ai</h1>
+                <p class="hero-subtitle">
+                    Discover the power of artificial intelligence with TrueSight.Ai. Our cutting-edge 
+                    platform harnesses advanced machine learning algorithms to provide unprecedented 
+                    insights and analytics for your business needs.
+                </p>
+                <p class="hero-description">
+                    Transform your data into actionable intelligence. From predictive analytics to real-time decision making, 
+                    TrueSight.Ai empowers organizations to see beyond the surface and make informed decisions with 
+                    confidence.
+                </p>
+                <div style="margin-top: 2rem;">
+                    <a href="#" class="btn btn-primary">Get Started</a>
+                    <a href="#" class="btn btn-outline" style="margin-left: 1rem;">Learn More</a>
+                </div>
+                <div class="scroll-hint">
+                    Scroll to explore
+                    <div class="arrow-down">↓</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="color-palette">
+            <div class="container">
+                <h2 style="text-align: center; margin-bottom: 1rem; background: var(--brand-gradient-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+                    Color Palette
+                </h2>
+                <p style="text-align: center; color: var(--text-secondary); margin-bottom: 2rem;">
+                    The color scheme used in this TrueSight.Ai design template
+                </p>
+                
+                <div class="palette-grid">
+                    <div class="color-card">
+                        <div class="color-swatch" style="background: var(--primary-bg);"></div>
+                        <div class="color-name">Primary Background</div>
+                        <div class="color-value">#0a0b1e</div>
+                    </div>
+                    
+                    <div class="color-card">
+                        <div class="color-swatch" style="background: var(--brand-primary);"></div>
+                        <div class="color-name">Brand Primary</div>
+                        <div class="color-value">#8b5cf6</div>
+                    </div>
+                    
+                    <div class="color-card">
+                        <div class="color-swatch" style="background: var(--brand-gradient);"></div>
+                        <div class="color-name">Brand Gradient</div>
+                        <div class="color-value">Linear Gradient</div>
+                    </div>
+                    
+                    <div class="color-card">
+                        <div class="color-swatch" style="background: var(--text-primary);"></div>
+                        <div class="color-name">Primary Text</div>
+                        <div class="color-value">#ffffff</div>
+                    </div>
+                    
+                    <div class="color-card">
+                        <div class="color-swatch" style="background: var(--text-secondary);"></div>
+                        <div class="color-name">Secondary Text</div>
+                        <div class="color-value">#b8b9c7</div>
+                    </div>
+                    
+                    <div class="color-card">
+                        <div class="color-swatch" style="background: var(--surface-bg);"></div>
+                        <div class="color-name">Surface Background</div>
+                        <div class="color-value">#2a2b3e</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
