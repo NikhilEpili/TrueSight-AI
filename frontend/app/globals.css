@@ -3,5 +3,55 @@
 @tailwind utilities;
 
 body {
-  @apply bg-background text-gray-900 font-sans;
+  @apply bg-[#f5f6fa] text-gray-800 font-sans;
 } 
+/* Add to app/globals.css */
+@keyframes slide-in-down {
+  0% { opacity: 0; transform: translateY(-60px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+@keyframes slide-in-up {
+  0% { opacity: 0; transform: translateY(60px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+.animate-slide-in-down {
+  animation: slide-in-down 0.8s cubic-bezier(0.4,0,0.2,1) both;
+}
+.animate-slide-in-up {
+  animation: slide-in-up 1.1s cubic-bezier(0.4,0,0.2,1) both;
+}
+@keyframes slide-in-down-long {
+  0% { opacity: 0; transform: translateY(-60px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+.animate-slide-in-down-long {
+  animation: slide-in-down-long 3.8s cubic-bezier(0.4,0,0.2,1) both;
+}
+@keyframes fade-in {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+.animate-fade-in-2s {
+  animation: fade-in 2s ease both;
+}
+@keyframes slide-in-right {
+  0% { opacity: 0; transform: translateX(80px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+@keyframes slide-in-left {
+  0% { opacity: 0; transform: translateX(-80px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+.animate-slide-in-right {
+  animation: slide-in-right 1s cubic-bezier(0.4,0,0.2,1) both;
+}
+.animate-slide-in-left {
+  animation: slide-in-left 1s cubic-bezier(0.4,0,0.2,1) both;
+}
+.ts-marquee {
+  animation: ts-marquee 18s linear infinite;
+}
+@keyframes ts-marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}

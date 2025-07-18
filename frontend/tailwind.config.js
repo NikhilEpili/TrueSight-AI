@@ -11,9 +11,9 @@ module.exports = {
         sans: ["Inter", "ui-sans-serif", "system-ui"],
       },
       colors: {
-        background: '#f9fafb', // very light background
+        background: '#f3f4f6', // medium-light background for the whole site
         primary: '#6366f1', // indigo-500
-        accent: '#f1f5f9', // light accent
+        accent: '#a5b4fc', // light indigo accent
       },
     },
   },
