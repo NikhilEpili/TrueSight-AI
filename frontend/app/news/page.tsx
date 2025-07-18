@@ -5,7 +5,7 @@ import { Search, AlertCircle, CheckCircle, Link as LinkIcon } from 'lucide-react
 
 type FactCheckResponse = {
   is_fake: boolean
-  confidence: float
+  confidence: number
   explanation: string
   sources: string[]
   warnings?: string[]

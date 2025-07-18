@@ -1,3 +1,19 @@
+# --- Node/Next.js/Frontend ---
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/.env*
+
+# Do NOT ignore config or source files
+!frontend/tsconfig.json
+!frontend/tailwind.config.js
+!frontend/postcss.config.js
+!frontend/package.json
+!frontend/package-lock.json
+!frontend/app/
+!frontend/components/
+!frontend/pages/
+
 # Ignore Python bytecode
 __pycache__/
 *.py[cod]
@@ -55,3 +71,5 @@ coverage.xml
 
 # Ignore pytest cache
 .pytest_cache/
+
+
