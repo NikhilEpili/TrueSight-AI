@@ -33,8 +33,8 @@ export default function Navbar() {
         <div className="flex items-center gap-3">
           <Link href="/" className="flex items-center gap-2 select-none">
             <TrueSightLogo />
-            <span className="text-3xl font-extrabold bg-gradient-to-r from-indigo-400 to-purple-300 bg-clip-text text-transparent tracking-tight leading-none pb-1" style={{display: 'inline-block'}}>
-              TrueSight.Ai
+            <span className="text-3xl font-extrabold font-heading bg-gradient-to-r from-indigo-400 to-purple-300 bg-clip-text text-transparent tracking-tight leading-none pb-1" style={{display: 'inline-block'}}>
+              TrueSight
             </span>
           </Link>
         </div>

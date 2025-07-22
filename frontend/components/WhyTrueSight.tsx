@@ -41,8 +41,8 @@ export default function WhyTrueSight() {
       <div className="w-full flex flex-row min-h-screen items-stretch mb-0">
         {/* Left: Why TrueSight? */}
         <div className="flex-1 flex items-center justify-end pr-8 bg-transparent">
-          <span className="font-extrabold text-pink-300 text-4xl lg:text-7xl leading-tight animate-zoom-in block text-left w-full max-w-2xl">
-            🧠 Why TrueSight?
+          <span className="font-extrabold font-heading text-pink-300 text-4xl lg:text-6xl leading-tight animate-zoom-in block text-left w-full max-w-2xl">
+            Why TrueSight?
           </span>
         </div>
         {/* Right: Description */}
@@ -54,7 +54,7 @@ export default function WhyTrueSight() {
       </div>
       {/* Flashy Centered Statement */}
       <div className="w-full flex justify-center items-center py-8">
-        <span className="font-extrabold text-3xl lg:text-5xl bg-gradient-to-r from-pink-400 via-yellow-300 to-purple-400 bg-clip-text text-transparent drop-shadow-lg animate-pulse text-center px-4" style={{letterSpacing: '0.02em'}}>
+        <span className="font-extrabold font-heading text-3xl lg:text-5xl bg-gradient-to-r from-pink-400 via-yellow-300 to-purple-400 bg-clip-text text-transparent drop-shadow-lg animate-pulse text-center px-4" style={{letterSpacing: '0.02em'}}>
           That’s where TrueSight steps in.
         </span>
       </div>
@@ -68,7 +68,7 @@ export default function WhyTrueSight() {
         </div>
         {/* Right: The Problem We're Solving */}
         <div className="flex-1 flex flex-col items-center justify-center pl-8 bg-transparent">
-          <span className="font-extrabold text-sky-300 text-4xl lg:text-7xl leading-tight animate-zoom-in block text-left w-full max-w-2xl mb-6">
+          <span className="font-extrabold font-heading text-sky-300 text-4xl lg:text-7xl leading-tight animate-zoom-in block text-left w-full max-w-2xl mb-6">
             🔍 The Problem We’re Solving
           </span>
           
@@ -76,7 +76,7 @@ export default function WhyTrueSight() {
       </div>
       {/* Title for features list */}
       <div className="px-4 max-w-7xl mx-auto">
-        <h2 className="text-2xl md:text-3xl font-extrabold mb-6 mt-12 text-white text-left">🔐 TrueSight is Different. Here's Why</h2>
+        <h2 className="text-2xl md:text-3xl font-extrabold font-heading mb-6 mt-12 text-white text-left">🔐 TrueSight is Different. Here's Why</h2>
         {/* Features as ordered list */}
         <ol className="list-decimal list-inside space-y-6 text-white text-lg md:text-xl mb-12">
           {cardData.map((card, idx) => (
@@ -89,7 +89,7 @@ export default function WhyTrueSight() {
         {/* The Future Ahead section */}
         <div className="backdrop-blur-md bg-white/10 rounded-2xl shadow-lg p-6 md:p-8 animate-fade-in-2s w-full max-w-3xl mx-auto mt-12">
           <p className="text-lg md:text-xl text-white mb-0">
-            <span className="font-bold text-purple-300 text-xl">🧭 The Future Ahead :-</span><br />
+            <span className="font-bold font-heading text-purple-300 text-xl">🧭 The Future Ahead :-</span><br />
             .TrueSight is only getting smarter. We aim to:<br />
             .Expand language support for global voice analysis.<br />
             .Create a reputation scoring system via blockchain for media trust.<br />

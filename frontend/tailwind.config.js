@@ -9,6 +9,7 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ["Inter", "ui-sans-serif", "system-ui"],
+        heading: ["Libre Baskerville", "serif"],
       },
       colors: {
         background: '#f3f4f6', // medium-light background for the whole site

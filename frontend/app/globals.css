@@ -1,10 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap');
 
 body {
   @apply bg-[#f5f6fa] text-gray-800 font-sans;
-} 
+}
 /* Add to app/globals.css */
 @keyframes slide-in-down {
   0% { opacity: 0; transform: translateY(-60px); }
@@ -54,4 +55,7 @@ body {
 @keyframes ts-marquee {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Libre Baskerville', serif;
 }
