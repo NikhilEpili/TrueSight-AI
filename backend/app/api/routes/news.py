@@ -1,8 +1,8 @@
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 from typing import Optional, List
-from ...core.logger import logger
-from ...services.news import analyze_article, analyze_text
+from app.core.logger import logger
+from app.services.news import analyze_article, analyze_text
 
 router = APIRouter()
 
