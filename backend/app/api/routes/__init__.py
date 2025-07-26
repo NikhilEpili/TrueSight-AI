@@ -1,11 +1,13 @@
 from fastapi import APIRouter
 from app.api.routes.detection import router as detection_router
 from app.api.routes.news import router as news_router
+from app.api.routes.analyze import router as analyze_router
 
 router = APIRouter()
 
 router.include_router(detection_router, prefix="/detection", tags=["detection"])
 router.include_router(news_router, prefix="/news", tags=["news"])
+router.include_router(analyze_router, tags=["analyze"])
 
 # --- Add /verify endpoints for extension compatibility ---
 from fastapi import UploadFile, File, HTTPException, Request, Form
