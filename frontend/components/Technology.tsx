@@ -129,15 +129,15 @@ export default function Technology() {
             })}
             {/* Central Danger Circle */}
             <div
-              className={`absolute left-1/2 top-[320px] -translate-x-1/2 flex flex-col items-center justify-center transition-all duration-300 z-10 ${dangerHover ? 'scale-[1.5]' : 'scale-100'}`}
+              className={`absolute left-1/2 top-[320px] -translate-x-1/2 flex flex-col items-center justify-center transition-all duration-300 z-10 `}
               onMouseEnter={() => setDangerHover(true)}
               onMouseLeave={() => setDangerHover(false)}
               style={{ transitionProperty: 'transform' }}
             >
-              <div className={`relative rounded-full bg-yellow-300 border-4 border-yellow-400 flex flex-col items-center justify-center font-bold text-3xl md:text-4xl text-[#23243a] transition-all duration-300 w-32 h-32 ${dangerHover ? 'w-72 h-72' : ''}`}
+              <div className={`relative rounded-full bg-yellow-300 border-4 border-yellow-400 flex flex-col items-center justify-center font-bold text-3xl md:text-2xl text-[#23243a] transition-all duration-300 w-32 h-32 hover:scale-150`}
                 style={{ transitionProperty: 'width, height, font-size, background, border' }}
               >
-                <span className="select-none text-4xl md:text-5xl">⚠️</span>
+                <span className="select-none text-3xl md:text-5xl">⚠️</span>
               </div>
             </div>
           </div>
@@ -158,4 +158,4 @@ export default function Technology() {
       <Footer />
     </div>
   );
-} 
+}

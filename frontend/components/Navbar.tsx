@@ -33,22 +33,22 @@ export default function Navbar() {
         <div className="flex items-center gap-3">
           <Link href="/" className="flex items-center gap-2 select-none">
             <TrueSightLogo />
-            <span className="text-3xl font-extrabold bg-gradient-to-r from-indigo-400 to-purple-300 bg-clip-text text-transparent tracking-tight leading-none pb-1" style={{display: 'inline-block'}}>
+            <span className="text-3xl font-extrabold bg-gradient-to-r from-indigo-400 to-purple-300 bg-clip-text text-transparent tracking-tight leading-none pb-1 font-orbitron" style={{display: 'inline-block'}}>
               TrueSight.Ai
             </span>
           </Link>
         </div>
         {/* Navigation Links */}
-        <div className="flex items-center gap-8">
-          <Link href="/why-truesight" className="text-lg font-bold text-[#23206F] hover:text-indigo-500 transition transform hover:scale-105">Why-TrueSight</Link>
-          <Link href="/deepfake-detection" className="text-lg font-bold text-[#23206F] hover:text-indigo-500 transition transform hover:scale-105">Deepfake-Detection</Link>
-          <Link href="/technology" className="text-lg font-bold text-[#23206F] hover:text-indigo-500 transition transform hover:scale-105">Technology</Link>
-          <Link href="/contact" className="text-lg font-bold text-[#23206F] hover:text-indigo-500 transition transform hover:scale-105">Use-Case</Link>
+        <div className="flex items-center gap-8 font-montserrat">
+          <Link href="/why-truesight" className="text-lg font-bold text-[#23206F] hover:text-indigo-500 transition transform hover:scale-105 font-rubik">Why-TrueSight</Link>
+          <Link href="/deepfake-detection" className="text-lg font-bold text-[#23206F] hover:text-indigo-500 transition transform hover:scale-105 font-rubik">Deepfake-Detection</Link>
+          <Link href="/technology" className="text-lg font-bold text-[#23206F] hover:text-indigo-500 transition transform hover:scale-105 font-rubik">Technology</Link>
+          <Link href="/contact" className="text-lg font-bold text-[#23206F] hover:text-indigo-500 transition transform hover:scale-105 font-rubik">Use-Case</Link>
         </div>
         {/* Auth Button */}
         <div>
           <button
-            className="ml-6 bg-indigo-400 hover:bg-indigo-600 text-white text-lg font-semibold rounded-full px-6 py-2 transition shadow"
+            className="ml-6 bg-indigo-400 hover:bg-indigo-600 text-white text-lg font-poppins font-semibold rounded-full px-6 py-2 transition shadow"
             onClick={handleAuthClick}
           >
             {user ? "Logout" : "Login"}
