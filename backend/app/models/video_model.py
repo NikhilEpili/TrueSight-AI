@@ -35,7 +35,7 @@ class VideoDeepfakeDetector:
         self.model: nn.Module = None
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         self.transform: transforms.Compose = None
-        self.frames_per_video = 8
+        self.frames_per_video = 16  # Increased from 8 to 16 for better accuracy
         self.models_loaded = False
         self._load_models()
         self._setup_transforms()
@@ -70,7 +70,7 @@ class VideoDeepfakeDetector:
             self.model = VideoClassifier(backbone, in_features, 2, self.frames_per_video)
             
             # Load the trained weights
-            model_path = os.path.join(os.path.dirname(__file__), '../../finetuned_dinov2_video.pth')
+            model_path = os.path.join(os.path.dirname(__file__), '../../finetuned_dinov2_video_sdfvd2.pth')
             if os.path.exists(model_path):
                 self.model.load_state_dict(torch.load(model_path, map_location=self.device))
                 logger.info(f"Loaded fine-tuned video model from {model_path}")

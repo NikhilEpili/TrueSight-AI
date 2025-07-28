@@ -11,12 +11,12 @@ from tqdm import tqdm
 from PIL import Image
 
 # Paths
-DATA_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../SDFVD'))
+DATA_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../SDFVD2.0'))
 TRAIN_REAL_DIR = os.path.join(DATA_DIR, 'real', 'train')
 TRAIN_FAKE_DIR = os.path.join(DATA_DIR, 'fake', 'train')
 TEST_REAL_DIR = os.path.join(DATA_DIR, 'real', 'test')
 TEST_FAKE_DIR = os.path.join(DATA_DIR, 'fake', 'test')
-MODEL_SAVE_PATH = 'finetuned_dinov2_video.pth'
+MODEL_SAVE_PATH = 'finetuned_dinov2_video_sdfvd2.pth'
 
 # Hyperparameters
 BATCH_SIZE = 4  # Fewer videos per batch due to memory
@@ -24,7 +24,8 @@ NUM_EPOCHS = 10
 LR = 1e-4
 IMG_SIZE = 224
 NUM_CLASSES = 2
-FRAMES_PER_VIDEO = 8
+FRAMES_PER_VIDEO = 16  # Increased from 8 to 16 for better accuracy
+USE_SMART_SAMPLING = True  # Enable smart frame sampling
 
 # Device
 DEVICE = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
@@ -66,7 +67,12 @@ class VideoDataset(Dataset):
     def _sample_frames(self, video_path):
         cap = cv2.VideoCapture(video_path)
         frame_count = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
-        idxs = np.linspace(0, frame_count-1, self.frames_per_video, dtype=int)
+        
+        if USE_SMART_SAMPLING and frame_count > self.frames_per_video:
+            idxs = self._smart_frame_sampling(cap, frame_count)
+        else:
+            idxs = np.linspace(0, frame_count-1, self.frames_per_video, dtype=int)
+        
         frames = []
         for idx in idxs:
             cap.set(cv2.CAP_PROP_POS_FRAMES, idx)
@@ -81,6 +87,74 @@ class VideoDataset(Dataset):
         while len(frames) < self.frames_per_video:
             frames.append(frames[-1])
         return frames
+    
+    def _smart_frame_sampling(self, cap, frame_count):
+        """Smart frame sampling using temporal weighting and motion detection."""
+        # Temporal weights: focus more on beginning, middle, and end
+        temporal_weights = np.zeros(frame_count)
+        
+        # Weight beginning (first 20% of frames)
+        start_frames = int(frame_count * 0.2)
+        temporal_weights[:start_frames] = 2.0
+        
+        # Weight middle (30-70% of frames)
+        mid_start = int(frame_count * 0.3)
+        mid_end = int(frame_count * 0.7)
+        temporal_weights[mid_start:mid_end] = 1.5
+        
+        # Weight end (last 20% of frames)
+        end_start = int(frame_count * 0.8)
+        temporal_weights[end_start:] = 2.0
+        
+        # Add motion-based weights
+        motion_weights = self._calculate_motion_weights(cap, frame_count)
+        
+        # Combine weights
+        combined_weights = temporal_weights + motion_weights * 0.5
+        
+        # Sample frames based on weights
+        idxs = np.random.choice(
+            frame_count, 
+            size=min(self.frames_per_video, frame_count), 
+            replace=False, 
+            p=combined_weights/combined_weights.sum()
+        )
+        
+        return np.sort(idxs)
+    
+    def _calculate_motion_weights(self, cap, frame_count):
+        """Calculate motion-based weights for frame sampling."""
+        motion_weights = np.zeros(frame_count)
+        
+        # Sample frames for motion calculation (every 10th frame for efficiency)
+        sample_interval = max(1, frame_count // 50)
+        prev_frame = None
+        
+        for i in range(0, frame_count, sample_interval):
+            cap.set(cv2.CAP_PROP_POS_FRAMES, i)
+            ret, frame = cap.read()
+            if not ret:
+                continue
+                
+            gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+            
+            if prev_frame is not None:
+                # Calculate motion using frame difference
+                motion = cv2.absdiff(gray, prev_frame)
+                motion_score = np.mean(motion)
+                
+                # Apply motion weight to surrounding frames
+                start_idx = max(0, i - sample_interval//2)
+                end_idx = min(frame_count, i + sample_interval//2)
+                motion_weights[start_idx:end_idx] += motion_score
+            
+            prev_frame = gray
+        
+        # Normalize motion weights
+        if motion_weights.max() > 0:
+            motion_weights = motion_weights / motion_weights.max()
+        
+        return motion_weights
 
 # Datasets and loaders
 train_dataset = VideoDataset(TRAIN_REAL_DIR, TRAIN_FAKE_DIR, frames_per_video=FRAMES_PER_VIDEO, transform=transform)

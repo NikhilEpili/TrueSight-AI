@@ -45,16 +45,24 @@ class AudioDeepfakeDetector:
         self._load_model()
     
     def _load_model(self):
-        """Load the Wav2Vec 2.0 model for audio deepfake detection."""
+        """Load the fine-tuned Wav2Vec 2.0 model for audio deepfake detection."""
         try:
-            # Using a pre-trained Wav2Vec 2.0 model
-            # You can replace this with your fine-tuned model
-            model_name = "facebook/wav2vec2-base"  # Placeholder - replace with actual model
+            # Load the fine-tuned model
+            model_name = "facebook/wav2vec2-base"
             self.feature_extractor = Wav2Vec2FeatureExtractor.from_pretrained(model_name)
             self.model = Wav2Vec2ForSequenceClassification.from_pretrained(
                 model_name,
                 num_labels=2  # real vs fake
             )
+            
+            # Load the trained weights
+            model_path = os.path.join(os.path.dirname(__file__), '../../finetuned_wav2vec_audio.pth')
+            if os.path.exists(model_path):
+                self.model.load_state_dict(torch.load(model_path, map_location=self.device))
+                logger.info(f"Loaded fine-tuned audio model from {model_path}")
+            else:
+                logger.warning(f"Fine-tuned audio model not found at {model_path}, using pretrained model")
+            
             self.model.to(self.device)  # type: ignore
             self.model.eval()
             self.models_loaded = True

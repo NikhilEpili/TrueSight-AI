@@ -21,15 +21,24 @@ class TextDeepfakeDetector:
         self._load_model()
     
     def _load_model(self):
-        """Load the RoBERTa model for AI-generated text detection."""
+        """Load the fine-tuned RoBERTa model for AI-generated text detection."""
         try:
-            # Using RoBERTa for synthetic/AI-generated text detection
+            # Load the fine-tuned model
             model_name = "roberta-base"
             self.tokenizer = AutoTokenizer.from_pretrained(model_name)
             self.model = AutoModelForSequenceClassification.from_pretrained(
                 model_name,
                 num_labels=2  # real vs AI-generated
             )
+            
+            # Load the trained weights
+            model_path = os.path.join(os.path.dirname(__file__), '../../finetuned_roberta_text.pth')
+            if os.path.exists(model_path):
+                self.model.load_state_dict(torch.load(model_path, map_location=self.device))
+                logger.info(f"Loaded fine-tuned text model from {model_path}")
+            else:
+                logger.warning(f"Fine-tuned text model not found at {model_path}, using pretrained model")
+            
             self.model.to(self.device)
             self.model.eval()
             logger.info("RoBERTa model loaded successfully for text analysis")

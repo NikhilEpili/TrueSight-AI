@@ -112,9 +112,9 @@ async def analyze_video(file: UploadFile, model: str = "default") -> dict:
             frames.append(frame)
         cap.release()
         
-        # Analyze key frames
+        # Analyze key frames with increased sampling
         results = []
-        for frame in frames[::30]:  # Analyze every 30th frame
+        for frame in frames[::15]:  # Analyze every 15th frame (doubled from 30)
             frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
             frame_pil = Image.fromarray(frame_rgb)
             
