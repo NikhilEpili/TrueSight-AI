@@ -51,7 +51,7 @@ export default function Technology() {
       {/* Top Section */}
       <div className="w-full flex flex-col md:flex-row items-center justify-between px-8 md:px-24 pt-20 pb-10">
         <div className="flex-1 flex flex-col items-start justify-center max-w-xl">
-          <h1 className="text-6xl md:text-7xl font-semibold bg-gradient-to-r from-purple-400 to-indigo-400 bg-clip-text text-transparent mb-6 leading-tight animate-slide-in-down-long leading-none pb-2" style={{ display: 'inline-block' }}>Technology</h1>
+          <h1 className="text-6xl md:text-7xl font-semibold text-purple-400 text-transparent mb-6 leading-tight animate-slide-in-down-long leading-none pb-2" style={{ display: 'inline-block' }}>Technology</h1>
           <p className="text-xl md:text-2xl text-white mb-10 font-medium">
             Building a real-time deepfake detection ecosystem across video, audio, and text requires a synergistic stack of powerful, scalable, and lightweight technologies. At TrueSight, we've carefully curated each part of our tech stack to maximize accuracy, speed, usability, and cross-platform compatibility.
           </p>
@@ -62,7 +62,7 @@ export default function Technology() {
       </div>
 
       {/* Marquee Section */}
-      <div className="w-full bg-[#23243a] bg-opacity-60 py-4 overflow-hidden flex items-center">
+      <div className="w-full bg-[#23243a] bg-opacity-60 py-4 overflow-hidden flex items-center pt-10">
         <div className="text-indigo-300 font-bold text-lg mr-8 ml-8 whitespace-nowrap">Models we use:</div>
         <div className="flex-1 overflow-x-hidden">
           <div className="flex ts-marquee gap-16">
@@ -77,7 +77,7 @@ export default function Technology() {
       <div className="w-full flex flex-col md:flex-row items-center justify-between px-8 md:px-24 py-20">
         <div className="flex-1 flex flex-col items-start justify-center max-w-2xl">
           <div className="uppercase text-white text-lg font-semibold mb-2 tracking-widest">Our Technology</div>
-          <h2 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-purple-400 to-indigo-400 bg-clip-text text-transparent mb-6 leading-tight">Since 2025 leaders in deepfake detection</h2>
+          <h2 className="text-5xl md:text-6xl font-bold text-indigo-400 mb-6 leading-tight">Since 2025 leaders in deepfake detection</h2>
         </div>
         <div className="flex-1 flex items-center justify-center max-w-xl">
           <p className="text-2xl text-white font-medium">

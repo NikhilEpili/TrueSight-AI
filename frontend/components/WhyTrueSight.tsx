@@ -59,25 +59,24 @@ export default function WhyTrueSight() {
   }, []);
 
   return (
-    <div className="px-0 max-w-none w-full">
-      {/* Hero Split Section */}
-      <div className="w-full flex flex-row min-h-screen items-stretch mb-0">
-        {/* Left: Why TrueSight? */}
-        <div className="flex-1 flex items-center justify-end pr-8 bg-transparent">
-          <span className="font-extrabold text-pink-300 text-4xl lg:text-7xl leading-tight animate-zoom-in block text-left w-full max-w-2xl font-poppins">
-            🧠 Why TrueSight?
-          </span>
+    <div className="px-0 max-w-none w-full pt-10">
+      {/* Hero Section (Image Left, Text Right) */}
+      <div className="w-full flex flex-row items-center justify-between min-h-[40vh] px-6 pt-20 pb-8 max-w-7xl mx-auto">
+        {/* Left: Image */}
+        <div className="flex-1 flex items-center justify-start">
+          <img src="/img5.png" alt="Why TrueSight" className="max-w-xs md:max-w-md lg:max-w-lg w-full h-auto rounded-2xl shadow-xl" />
         </div>
-        {/* Right: Description */}
-        <div className="flex-1 flex items-center justify-start pl-8 bg-transparent">
-          <p className="text-white text-2xl lg:text-3xl font-normal text-left animate-fade-in-2s max-w-2xl font-rubik">
+        {/* Right: Heading and Paragraph */}
+        <div className="flex-1 flex flex-col items-end justify-center text-left">
+          <h1 className="font-bold text-purple-400 text-4xl lg:text-7xl mb-6 font-poppins">Why TrueSight?</h1>
+          <p className="text-white text-lg md:text-2xl font-normal font-rubik max-w-2xl">
             In an age where artificial intelligence can mimic human faces, voices, and even emotions, TrueSight.AI stands as a vigilant guardian of digital trust. The rise of deepfakes—highly convincing fake media generated using AI—has sparked a wave of scams, impersonation attacks, misinformation, and digital identity abuse, especially in platforms where real-time communication is essential.
           </p>
         </div>
       </div>
       {/* Flashy Centered Statement */}
       <div className="w-full flex justify-center items-center py-8">
-        <span className="font-extrabold text-3xl lg:text-5xl bg-gradient-to-r from-pink-400 via-yellow-300 to-purple-400 bg-clip-text text-transparent drop-shadow-lg animate-pulse text-center px-4 font-poppins" style={{letterSpacing: '0.02em'}}>
+        <span className="font-extrabold text-3xl lg:text-5xl text-purple-400  bg-clip-text text-transparent drop-shadow-lg text-center px-4 font-poppins" style={{letterSpacing: '0.02em'}}>
           That's where TrueSight steps in.
         </span>
       </div>
@@ -91,8 +90,8 @@ export default function WhyTrueSight() {
         </div>
         {/* Right: The Problem We're Solving */}
         <div className="flex-1 flex flex-col items-center justify-center pl-8 bg-transparent">
-          <span className="font-extrabold text-sky-300 text-4xl lg:text-7xl leading-tight animate-zoom-in block text-left w-full max-w-2xl mb-6 font-poppins">
-            🔍 The Problem We're Solving
+          <span className="font-bold text-sky-300 text-4xl lg:text-7xl leading-tight animate-zoom-in block text-left w-full max-w-2xl mb-6 font-poppins">
+            The Problem We're Solving
           </span>
         </div>
       </div>
@@ -142,7 +141,7 @@ export default function WhyTrueSight() {
                     <span className="bg-indigo-500 text-white px-3 py-1 rounded-full text-sm font-semibold font-rubik">
                       {i + 1}
                     </span>
-                    <h3 className="text-xl font-bold bg-gradient-to-r from-purple-400 to-indigo-400 bg-clip-text text-transparent font-poppins">
+                    <h3 className="text-xl font-bold text-indigo-400 font-poppins">
                       {card.title}
                     </h3>
                   </div>

@@ -104,14 +104,14 @@ export default function UseCase() {
   }, []);
 
   return (
-    <div className="bg-gradient-to-br from-[#23243a] via-[#181824] to-[#2d2c3a] min-h-screen w-full flex flex-col items-center px-2 md:px-0 text-white">
+    <div className="bg-gradient-to-br from-[#23243a] via-[#181824] to-[#2d2c3a] min-h-screen w-full flex flex-col items-center px-2 md:px-0 text-white pt-10">
       {/* Top Section: Cards + Right Text */}
       <div className="w-full max-w-7xl flex flex-col md:flex-row gap-8 py-16">
         {/* Left: Cards (scrollable on mobile) */}
-        <div className="flex-1 flex flex-col gap-6 max-w-lg mx-auto md:mx-0 overflow-y-auto scrollbar-none" style={{ maxHeight: 500 }}>
+        <div className="flex-1 flex flex-col gap-10 max-w-lg mx-auto md:mx-0 overflow-y-auto " style={{ maxHeight: 500 }}>
           {leftCards.map((card, i) => (
             <div key={i} className="bg-[#23243a] bg-opacity-80 rounded-3xl shadow-lg p-8 flex flex-col gap-3 items-start border border-[#3a4be8] min-w-[320px] max-w-full">
-              <h3 className="text-2xl font-semibold bg-gradient-to-r from-purple-400 to-indigo-400 bg-clip-text text-transparent mb-1 font-poppins">{card.title}</h3>
+              <h3 className="text-2xl font-semibold  text-purple-400 text-transparent mb-1 font-poppins">{card.title}</h3>
               <p className="text-lg text-gray-200 font-normal leading-relaxed font-rubik">{card.desc}</p>
             </div>
           ))}
@@ -119,7 +119,7 @@ export default function UseCase() {
         {/* Right: Heading and Paragraph */}
         <div className="flex-1 flex flex-col justify-center items-start px-2 md:px-8">
           <div className="uppercase text-indigo-300 text-base font-semibold mb-2 tracking-widest font-poppins">How TrueSight can help you</div>
-          <h2 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-purple-400 to-indigo-400 bg-clip-text text-transparent mb-8 leading-tight font-poppins">Improve security and reduce losses due to AI-powered threats</h2>
+          <h2 className="text-5xl md:text-6xl font-bold text-purple-400 mb-8 leading-tight font-poppins">Improve security and reduce losses due to AI-powered threats</h2>
           <p className="text-xl text-gray-200 font-medium max-w-2xl font-rubik">
             Deepfakes are here to stay, getting better in quality and having a worse impact on society at every level. Equipping your organization with TrueSight AI means adopting the best-in-class solution with a multilayer approach for reducing the risks and consequences of AI-powered cyber threats
           </p>
@@ -199,7 +199,7 @@ export default function UseCase() {
                   onClick={() => window.open(paper.link, '_blank')}
                 >
                   <div className="flex items-center gap-3 mb-3">
-                    <h3 className="text-xl font-bold bg-gradient-to-r from-purple-400 to-indigo-400 bg-clip-text text-transparent font-poppins">
+                    <h3 className="text-xl font-bold text-indigo-400 font-poppins">
                       {paper.title}
                     </h3>
                     <span className="bg-indigo-500 text-white px-2 py-1 rounded-full text-xs font-semibold font-rubik">

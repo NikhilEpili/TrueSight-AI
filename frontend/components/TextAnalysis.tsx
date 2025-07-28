@@ -7,7 +7,7 @@ export default function TextAnalysis() {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-[#23243a] via-[#181824] to-[#2d2c3a] py-12 px-4">
       <div className="relative w-full max-w-2xl mx-auto bg-white/10 rounded-2xl shadow-xl p-10 flex flex-col items-center">
-        <h1 className="text-3xl md:text-4xl font-extrabold mb-4 bg-gradient-to-r from-purple-400 to-indigo-500 bg-clip-text text-transparent text-center font-poppins">Text Analysis</h1>
+        <h1 className="text-3xl md:text-4xl font-extrabold mb-4 text-indigo-400 text-center font-poppins">Text Analysis</h1>
         <p className="text-lg text-white mb-8 text-center font-rubik">Enter your text to detect if it's AI-generated or authentic human content</p>
         <div className="w-full flex flex-col items-center mb-8">
           <textarea

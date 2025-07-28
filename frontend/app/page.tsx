@@ -5,6 +5,10 @@ import { Shield, FileSearch, Globe } from 'lucide-react';
 import Footer from '../components/Footer';
 import { useAuth } from '../components/Providers';
 import { useRouter } from 'next/navigation';
+import { Inter, Roboto } from 'next/font/google';
+
+const inter = Inter({ subsets: ['latin'] });
+const roboto = Roboto({ subsets: ['latin'], weight: ['400', '700'] });
 
 export default function Home() {
   const { user } = useAuth();
@@ -45,19 +49,13 @@ export default function Home() {
   return (
     <div className="relative isolate">
       {/* Section 2: Split left/right */}
-      <div className="flex flex-col md:flex-row items-center justify-center w-full max-w-6xl mx-auto pt-8 md:pt-12 gap-8">
-        {/* Left: Title */}
-        <div className="flex-1 flex items-center justify-center w-full animate-fade-in-2s">
-          <h2 className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-[#a78bfa] to-[#38bdf8] bg-clip-text text-transparent text-center md:text-left font-poppins">
-            Detect Deepfakes & Misinformation in Real-time
-          </h2>
-        </div>
-        {/* Right: Description (no card effect) */}
-        <div className="flex-1 flex items-center justify-center w-full">
-          <p className="text-lg md:text-xl text-gray-200 text-center md:text-left animate-fade-in-2s font-rubik">
-            Discover the power of artificial intelligence with TrueSight.Ai. Our cutting-edge platform harnesses advanced machine learning algorithms to provide unprecedented insights and analytics for your business needs.
-          </p>
-        </div>
+      <div className="w-full flex flex-col items-center justify-center max-w-4xl mx-auto pt--10 pb-8">
+        <h2 className={`text-4xl md:text-5xl font-extrabold text-[#a78bfa] animate-slide-in-down-long text-center font-poppins ${inter.className}`}>
+          Detect Deepfakes & Misinformation in Real-time
+        </h2>
+        <p className={`text-left text-2x1 md:text-3x1 text-base md:text-lg text-gray-200 text-center mt-4 animate-slide-in-down-long font-rubik ${roboto.className}`} style={{ fontFamily: 'Helvetica Neue, Roboto, Arial, sans-serif' }}>
+        TrueSight empowers users to detect deepfakes and misinformation in real time using cutting-edge AI technology that analyzes videos, images, audio, and text within seconds. In a world where synthetic media is becoming increasingly realistic and widespread, TrueSight serves as your digital truth shield—leveraging advanced machine learning models trained on vast datasets to identify even the most subtle signs of manipulation, such as pixel-level inconsistencies, unnatural facial expressions, audio mismatches, and falsified claims. Our platform performs frame-by-frame and sentence-level analysis, providing instant feedback and trust scores to help users assess content credibility on the spot. Whether you're watching a viral video, reading a news article, or listening to a voice note, TrueSight flags tampered elements before they can influence public opinion or cause harm. 
+        </p>
       </div>
       
       {/* Section 3: Centered image */}
@@ -68,7 +66,7 @@ export default function Home() {
       {/* Deepfake Description Section */}
       <div className="max-w-4xl mx-auto px-6 py-8 animate-fade-in-2s">
         <div className="bg-[#23243a] bg-opacity-60 rounded-2xl p-8 border border-[#3a4be8] shadow-lg">
-          <h3 className="text-2xl md:text-3xl font-bold mb-6 bg-gradient-to-r from-purple-400 to-indigo-400 bg-clip-text text-transparent text-center font-poppins">
+          <h3 className="text-2xl md:text-3xl font-bold mb-6 text-indigo-400 text-center font-poppins">
             What are Deepfakes?
           </h3>
           <div className="space-y-4 text-gray-200 font-rubik">

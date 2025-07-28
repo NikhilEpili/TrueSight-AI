@@ -40,7 +40,7 @@ export default function DeepfakeDetection() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#23243a] via-[#181824] to-[#2d2c3a] py-12 px-4 flex flex-col">
+    <div className="min-h-screen bg-gradient-to-br from-[#23243a] via-[#181824] to-[#2d2c3a] py-15 px-4 flex flex-col pt-20">
       {/* Hero Section */}
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12 mb-16">
         {/* Left: Title and Description */}
