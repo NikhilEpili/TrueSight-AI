@@ -1,59 +1,146 @@
 import React from 'react';
+import Link from 'next/link';
+import { Mail, Twitter, Github, Youtube, Linkedin } from 'lucide-react';
 
 export default function Footer() {
+  const footerLinks = {
+    product: [
+      { name: 'Home', href: '/' },
+      { name: 'Deepfake Detection', href: '/deepfake-detection' },
+      { name: 'News Verification', href: '/news' },
+      { name: 'Browser Extension', href: '/extension' },
+    ],
+    resources: [
+      { name: 'Documentation', href: '#' },
+      { name: 'API Reference', href: '#' },
+      { name: 'Blog', href: '#' },
+      { name: 'Support', href: '#' },
+    ],
+    company: [
+      { name: 'About Us', href: '/why-truesight' },
+      { name: 'Technology', href: '/technology' },
+      { name: 'Use Cases', href: '/contact' },
+      { name: 'Contact', href: '/contact' },
+    ],
+    legal: [
+      { name: 'Privacy Policy', href: '#' },
+      { name: 'Terms of Service', href: '#' },
+      { name: 'Security', href: '#' },
+    ],
+  };
+
+  const socialLinks = [
+    { name: 'Twitter', href: '#', icon: Twitter },
+    { name: 'GitHub', href: '#', icon: Github },
+    { name: 'YouTube', href: '#', icon: Youtube },
+    { name: 'LinkedIn', href: '#', icon: Linkedin },
+  ];
+
   return (
-    <footer className="bg-gradient-to-br from-[#23243a] via-[#181824] to-[#2d2c3a] text-gray-300 pt-8 pb-4 px-4 border-t border-[#23243a]/40 w-full">
-      <div className="w-full flex flex-col md:flex-row md:justify-between gap-6">
-        <div className="flex flex-col gap-4 min-w-[180px]">
-          <span className="font-bold text-lg text-white mb-2">hi@truesight.ai</span>
-          <div className="flex gap-4 text-xl">
-            <a href="#" className="hover:text-indigo-400 transition-colors"><span className="sr-only">Twitter</span>🐦</a>
-            <a href="#" className="hover:text-indigo-400 transition-colors"><span className="sr-only">GitHub</span>🐙</a>
-            <a href="#" className="hover:text-indigo-400 transition-colors"><span className="sr-only">Reddit</span>👽</a>
-            <a href="#" className="hover:text-indigo-400 transition-colors"><span className="sr-only">YouTube</span>▶️</a>
+    <footer className="bg-gradient-to-br from-gray-900/50 to-gray-800/50 border-t border-gray-700/50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+          {/* Brand Section */}
+          <div className="lg:col-span-2">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-8 h-8 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-lg flex items-center justify-center">
+                <span className="text-white font-bold text-sm">TS</span>
+              </div>
+              <span className="text-xl font-bold gradient-text">TrueSight.AI</span>
+            </div>
+            <p className="text-gray-400 mb-6 max-w-md">
+              Advanced AI-powered deepfake detection and misinformation verification platform. 
+              Protect yourself from synthetic media with cutting-edge technology.
+            </p>
+            <div className="flex items-center gap-2 mb-6">
+              <Mail className="w-5 h-5 text-gray-400" />
+              <a href="mailto:hi@truesight.ai" className="text-gray-300 hover:text-white transition-colors">
+                hi@truesight.ai
+              </a>
+            </div>
+            <div className="flex gap-4">
+              {socialLinks.map((social) => (
+                <a
+                  key={social.name}
+                  href={social.href}
+                  className="text-gray-400 hover:text-white transition-colors"
+                  aria-label={social.name}
+                >
+                  <social.icon className="w-5 h-5" />
+                </a>
+              ))}
+            </div>
+          </div>
+
+          {/* Links Sections */}
+          <div>
+            <h3 className="text-white font-semibold mb-4">Product</h3>
+            <ul className="space-y-3">
+              {footerLinks.product.map((link) => (
+                <li key={link.name}>
+                  <Link
+                    href={link.href}
+                    className="text-gray-400 hover:text-white transition-colors"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="text-white font-semibold mb-4">Resources</h3>
+            <ul className="space-y-3">
+              {footerLinks.resources.map((link) => (
+                <li key={link.name}>
+                  <Link
+                    href={link.href}
+                    className="text-gray-400 hover:text-white transition-colors"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="text-white font-semibold mb-4">Company</h3>
+            <ul className="space-y-3">
+              {footerLinks.company.map((link) => (
+                <li key={link.name}>
+                  <Link
+                    href={link.href}
+                    className="text-gray-400 hover:text-white transition-colors"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 flex-1">
-          <div>
-            <div className="font-bold text-white mb-2 font-poppins">Product</div>
-            <ul className="space-y-1">
-              <li><a href="/" className="font-medium hover:text-indigo-400 transition-colors font-rubik">Home</a></li>
-              <li><a href="#" className="font-medium hover:text-indigo-400 transition-colors font-rubik">Features</a></li>
-              <li><a href="#" className="font-medium hover:text-indigo-400 transition-colors font-rubik">Pricing</a></li>
-              <li><a href="#" className="font-medium hover:text-indigo-400 transition-colors font-rubik">Enterprise</a></li>
-              <li><a href="#" className="font-medium hover:text-indigo-400 transition-colors font-rubik">Downloads</a></li>
-            </ul>
-          </div>
-          <div>
-            <div className="font-bold text-white mb-2 font-poppins">Resources</div>
-            <ul className="space-y-1">
-              <li><a href="#" className="font-medium hover:text-indigo-400 transition-colors font-rubik">Docs</a></li>
-              <li><a href="#" className="font-medium hover:text-indigo-400 transition-colors font-rubik">Blog</a></li>
-              <li><a href="#" className="font-medium hover:text-indigo-400 transition-colors font-rubik">Forum</a></li>
-              <li><a href="#" className="font-medium hover:text-indigo-400 transition-colors font-rubik">Changelog</a></li>
-            </ul>
-          </div>
-          <div>
-            <div className="font-bold text-white mb-2 font-poppins">Company</div>
-            <ul className="space-y-1">
-              <li><a href="#" className="font-medium hover:text-indigo-400 transition-colors font-rubik">About</a></li>
-              <li><a href="#" className="font-medium hover:text-indigo-400 transition-colors font-rubik">Careers</a></li>
-              <li><a href="#" className="font-medium hover:text-indigo-400 transition-colors font-rubik">Customers</a></li>
-              <li><a href="#" className="font-medium hover:text-indigo-400 transition-colors font-rubik">Community</a></li>
-            </ul>
-          </div>
-          <div>
-            <div className="font-bold text-white mb-2 font-poppins">Legal</div>
-            <ul className="space-y-1">
-              <li><a href="#" className="font-medium hover:text-indigo-400 transition-colors font-rubik">Privacy</a></li>
-              <li><a href="#" className="font-medium hover:text-indigo-400 transition-colors font-rubik">Security</a></li>
-              <li><a href="#" className="font-medium hover:text-indigo-400 transition-colors font-rubik">Terms</a></li>
-            </ul>
+
+        {/* Bottom Section */}
+        <div className="border-t border-gray-700/50 mt-8 pt-8">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="text-gray-400 text-sm">
+              © 2024 TrueSight.AI. All rights reserved.
+            </p>
+            <div className="flex gap-6">
+              {footerLinks.legal.map((link) => (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  className="text-gray-400 hover:text-white transition-colors text-sm"
+                >
+                  {link.name}
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
-      </div>
-      <div className="font-bold w-full mt-6 text-center text-gray-400 text-sm border-t border-[#23243a]/40 pt-3 font-rubik">
-        © 2024 TrueSight.Ai. All rights reserved.
       </div>
     </footer>
   );
