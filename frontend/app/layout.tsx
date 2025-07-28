@@ -43,10 +43,10 @@ export default function RootLayout({
             )}
             {isRoot && (
               <section className="flex flex-col flex-grow items-center justify-center text-center w-full min-h-[60vh]">
-                <h1 className={`text-4xl md:text-6xl font-extrabold mb-4 text-purple-400 text-transparent animate-slide-in-down-long leading-none pb-2 font-orbitron ${libreBaskerville.className}`} style={{display: 'inline-block'}}>
-                  Welcome to TrueSight.Ai
+                <h1 className={`text-4xl md:text-6xl font-extrabold mb-4 text-white animate-slide-in-down-long leading-none pb-2 font-orbitron ${libreBaskerville.className}`} style={{display: 'inline-block'}}>
+                  Welcome to TrueSight
                 </h1>
-                <p className={`text-2xl md:text-3xl font-extrabold mb-4 text-purple-400 text-transparent animate-slide-in-down-long leading-none pb-2 font-orbitron ${libreBaskerville.className}`} style={{display: 'inline-block'}}>
+                <p className={`text-2xl md:text-3xl font-extrabold mb-4 text-white animate-slide-in-down-long leading-none pb-2 font-orbitron ${libreBaskerville.className}`} style={{display: 'inline-block'}}>
                   Beyond Sight, Towards Understanding !!
                 </p>
               </section>
