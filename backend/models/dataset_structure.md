@@ -105,4 +105,5 @@ After training, the following model files will be created:
 - **RoBERTa model** for AI-generated text detection
 - **512 token sequence length**
 - **Special tokens** for better detection
-- **OneCycleLR scheduler** with warmup 
+- **OneCycleLR scheduler** with warmup
+
