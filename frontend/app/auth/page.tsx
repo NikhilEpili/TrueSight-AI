@@ -110,7 +110,7 @@ const Auth: React.FC = () => {
         <div className="bubble bubble-pink delay-2s" />
       </div>
       {/* REGISTER FORM */}
-      <div className="form-container sign-up-container">
+      <div className="font-semibold form-container sign-up-container font-poppins">
         <form onSubmit={handleRegister} autoComplete="off">
           <h2>Create Account</h2>
           <input type="text" name="name" placeholder="Name" autoComplete="off" value={registerData.name} onChange={(e) => setRegisterData({ ...registerData, name: e.target.value })} required />
@@ -125,7 +125,7 @@ const Auth: React.FC = () => {
         </form>
       </div>
       {/* LOGIN FORM */}
-      <div className="form-container sign-in-container">
+      <div className="font-semibold form-container sign-in-container font-poppins">
         <form onSubmit={handleLogin} autoComplete="off">
           <h2>Sign In</h2>
           <input type="email" name="email" placeholder="Email" autoComplete="off" value={loginData.email} onChange={(e) => setLoginData({ ...loginData, email: e.target.value })} required />
@@ -134,26 +134,28 @@ const Auth: React.FC = () => {
         </form>
       </div>
       {/* OVERLAY */}
-      <div className="overlay-container">
+      <div className="overlay-container font-poppins">
         <div className="overlay">
-          <div className="overlay-panel overlay-left">
+          <div className=" font-semibold overlay-panel overlay-left font-poppins">
             <h2>Welcome Back!</h2>
             <p>To keep connected, login with your personal info</p>
+            <br></br>
             <button className="ghost" onClick={() => setIsRegister(false)}>Login</button>
           </div>
-          <div className="overlay-panel overlay-right">
+          <div className="font-semibold overlay-panel overlay-right font-poppins ">
             <h2>Hello, Friend!</h2>
             <p>Enter your details to start your journey with us</p>
+            <br></br>
             <button className="ghost" onClick={() => setIsRegister(true)}>Register</button>
           </div>
         </div>
       </div>
       <style jsx>{`
         .truesight-auth-container {
-          background: rgba(35,36,58,0.95);
+          background: rgba(30, 31, 43, 0.95);
           backdrop-filter: blur(12px);
           border-radius: 16px;
-          box-shadow: 0 14px 28px rgba(140, 20, 252, 0.08), 0 10px 10px rgba(140, 20, 252, 0.06);
+          box-shadow: 0 14px 28px rgba(138, 132, 255, 0.08), 0 10px 10px rgba(138, 132, 255, 0.06);
           position: relative;
           overflow: hidden;
           width: 768px;
@@ -177,8 +179,8 @@ const Auth: React.FC = () => {
           padding: 0 50px;
           text-align: center;
           width: 50%;
-          background: linear-gradient(135deg, #23243a 0%, #2d2c3a 100%);
-          box-shadow: 0 4px 24px rgba(140, 20, 252, 0.06);
+          background: linear-gradient(135deg, #1E1F2B 0%, #2B2E4A 100%);
+          box-shadow: 0 4px 24px rgba(138, 132, 255, 0.06);
           border-radius: 16px;
           animation: slideInLeft 1s cubic-bezier(.68,-0.55,.27,1.55);
           z-index: 2;
@@ -192,32 +194,33 @@ const Auth: React.FC = () => {
         input {
           padding: 12px;
           width: 100%;
-          background: #181824;
-          border: 1px solid #444;
+          background: #1E1F2B;
+          border: 1px solid #8A84FF;
           border-radius: 5px;
           outline: none;
-          color: #eee;
+          color: #FFFFFF;
         }
         input::placeholder {
-          color: #aaa;
+          color: #ADB5BD;
         }
         button {
           padding: 12px;
-          background-color: #6366f1;
+          background-color: #8A84FF;
           color: #fff;
           border: none;
           border-radius: 5px;
           font-weight: bold;
           cursor: pointer;
-          transition: background 0.3s ease;
+          transition: all 0.3s ease;
           animation: fadeInUp 1.2s cubic-bezier(.68,-0.55,.27,1.55);
         }
         button:hover {
-          background-color: #7c3aed;
+          background-color: #B57EDC;
+          transform: scale(1.02);
         }
         button.ghost {
           background-color: transparent;
-          border: 2px solid #eee;
+          border: 2px solid #FFFFFF;
         }
         .sign-in-container {
           left: 0;
@@ -247,7 +250,7 @@ const Auth: React.FC = () => {
           z-index: 100;
         }
         .overlay {
-          background: linear-gradient(to right, #6366f1, #a78bfa);
+          background: linear-gradient(to right, #8A84FF, #B57EDC);
           color: #fff;
           position: relative;
           left: -100%;
@@ -301,16 +304,17 @@ const Auth: React.FC = () => {
         .oauth-btn {
           padding: 10px;
           font-size: 0.9rem;
-          background-color: #23243a;
-          color: #eee;
-          border: 1px solid #444;
+          background-color: #2B2E4A;
+          color: #FFFFFF;
+          border: 1px solid #8A84FF;
           border-radius: 5px;
           cursor: pointer;
-          transition: background 0.2s ease;
+          transition: all 0.2s ease;
           animation: fadeInUp 1.2s cubic-bezier(.68,-0.55,.27,1.55);
         }
         .oauth-btn:hover {
-          background-color: #6366f1;
+          background-color: #8A84FF;
+          transform: scale(1.02);
         }
         .background-bubbles {
           position: absolute;
@@ -331,21 +335,21 @@ const Auth: React.FC = () => {
           left: 25%;
           width: 120px;
           height: 120px;
-          background: #a78bfa;
+          background: #8A84FF;
         }
         .bubble-blue {
           bottom: 25%;
           right: 25%;
           width: 100px;
           height: 100px;
-          background: #6366f1;
+          background: #B57EDC;
         }
         .bubble-pink {
           bottom: 20%;
           left: 35%;
           width: 110px;
           height: 110px;
-          background: #ec4899;
+          background: #B57EDC;
         }
         @keyframes fadeInUp {
           from { opacity: 0; transform: translateY(40px); }

@@ -1,75 +1,78 @@
-'use client'
+'use client';
 
-import { useState } from 'react'
-import { Upload, AlertCircle, CheckCircle } from 'lucide-react'
-import { useDropzone } from 'react-dropzone'
+import { useState, useCallback } from 'react';
+import { Upload, FileText, Image, Video, Music } from 'lucide-react';
+import { useDropzone } from 'react-dropzone';
 
-type AnalysisResult = {
-  is_fake: boolean
-  confidence: number
+interface AnalysisResult {
+  is_fake: boolean;
+  confidence: number;
   analysis: {
-    [key: string]: boolean
-  }
+    [key: string]: number;
+  };
 }
 
 export default function MediaAnalysis() {
-  const [file, setFile] = useState<File | null>(null)
-  const [isAnalyzing, setIsAnalyzing] = useState(false)
-  const [result, setResult] = useState<AnalysisResult | null>(null)
-  const [error, setError] = useState<string | null>(null)
+  const [file, setFile] = useState<File | null>(null);
+  const [result, setResult] = useState<AnalysisResult | null>(null);
+  const [isAnalyzing, setIsAnalyzing] = useState(false);
+  const [error, setError] = useState('');
 
-  const onDrop = (acceptedFiles: File[]) => {
-    setFile(acceptedFiles[0])
-    setResult(null)
-    setError(null)
-  }
+  const onDrop = useCallback((acceptedFiles: File[]) => {
+    if (acceptedFiles.length > 0) {
+      setFile(acceptedFiles[0]);
+      setResult(null);
+      setError('');
+    }
+  }, []);
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
     accept: {
       'image/*': ['.jpeg', '.jpg', '.png', '.gif'],
-      'video/*': ['.mp4', '.mpeg', '.quicktime'],
-      'audio/*': ['.mp3', '.wav'],
+      'video/*': ['.mp4', '.avi', '.mov'],
+      'audio/*': ['.mp3', '.wav', '.m4a']
     },
-    maxSize: 100 * 1024 * 1024, // 100MB
-  })
+    multiple: false
+  });
 
   const analyzeFile = async () => {
-    if (!file) return
+    if (!file) return;
 
-    setIsAnalyzing(true)
-    setError(null)
-
-    const formData = new FormData()
-    formData.append('file', file)
+    setIsAnalyzing(true);
+    setError('');
 
     try {
-      let endpoint = ''
-      if (file.type.startsWith('image/')) {
-        endpoint = '/api/detection/image'
-      } else if (file.type.startsWith('video/')) {
-        endpoint = '/api/detection/video'
-      } else if (file.type.startsWith('audio/')) {
-        endpoint = '/api/detection/audio'
-      }
+      // Simulate API call
+      await new Promise(resolve => setTimeout(resolve, 3000));
+      
+      // Mock result
+      const mockResult: AnalysisResult = {
+        is_fake: Math.random() > 0.5,
+        confidence: Math.random(),
+        analysis: {
+          'face_consistency': Math.random(),
+          'audio_sync': Math.random(),
+          'compression_artifacts': Math.random(),
+          'metadata_analysis': Math.random(),
+          'deep_learning_score': Math.random()
+        }
+      };
 
-      const response = await fetch(endpoint, {
-        method: 'POST',
-        body: formData,
-      })
-
-      if (!response.ok) {
-        throw new Error('Analysis failed')
-      }
-
-      const data = await response.json()
-      setResult(data)
+      setResult(mockResult);
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'An error occurred')
+      setError('Failed to analyze file. Please try again.');
     } finally {
-      setIsAnalyzing(false)
+      setIsAnalyzing(false);
     }
-  }
+  };
+
+  const getFileIcon = (file: File) => {
+    if (file.type.startsWith('image/')) return <Image className="h-8 w-8" />;
+    if (file.type.startsWith('video/')) return <Video className="h-8 w-8" />;
+    if (file.type.startsWith('audio/')) return <Music className="h-8 w-8" />;
+    return <FileText className="h-8 w-8" />;
+  };
 
   return (
     <div className="max-w-4xl mx-auto">
@@ -83,7 +86,7 @@ export default function MediaAnalysis() {
         </p>
       </div>
 
-      {/* Upload Area */}
+      {/* File Upload Area */}
       <div
         {...getRootProps()}
         className={`border-2 border-dashed rounded-lg p-12 text-center cursor-pointer transition-colors
@@ -121,14 +124,22 @@ export default function MediaAnalysis() {
         </div>
       )}
 
+      {/* Loading State */}
+      {isAnalyzing && (
+        <div className="text-center py-8">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-500 mx-auto mb-4"></div>
+          <p className="text-gray-600 dark:text-gray-300">Analyzing media file...</p>
+        </div>
+      )}
+
       {/* Results */}
       {result && (
         <div className="mt-12 p-6 bg-white dark:bg-gray-800 rounded-lg shadow">
           <div className="flex items-center justify-center mb-6">
             {result.is_fake ? (
-              <AlertCircle className="h-12 w-12 text-red-500" />
+              <div className="text-red-500 text-6xl">⚠️</div>
             ) : (
-              <CheckCircle className="h-12 w-12 text-green-500" />
+              <div className="text-green-500 text-6xl">✅</div>
             )}
           </div>
           <h2 className="text-xl font-semibold text-center mb-6 text-gray-900 dark:text-white">
@@ -146,12 +157,8 @@ export default function MediaAnalysis() {
                 <span className="text-gray-600 dark:text-gray-300">
                   {key.split('_').map((word) => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}
                 </span>
-                <span
-                  className={`font-semibold ${
-                    value ? 'text-red-500' : 'text-green-500'
-                  }`}
-                >
-                  {value ? 'Detected' : 'Not Detected'}
+                <span className="font-semibold text-gray-900 dark:text-white">
+                  {(value * 100).toFixed(1)}%
                 </span>
               </div>
             ))}
@@ -166,5 +173,5 @@ export default function MediaAnalysis() {
         </div>
       )}
     </div>
-  )
+  );
 } 

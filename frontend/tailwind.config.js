@@ -9,6 +9,10 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ["Inter", "ui-sans-serif", "system-ui"],
+        poppins: ["Poppins", "sans-serif"],
+        rubik: ["Rubik", "sans-serif"],
+        orbitron: ["Orbitron", "sans-serif"],
+        montserrat: ["Montserrat", "sans-serif"],
       },
       colors: {
         background: '#f3f4f6', // medium-light background for the whole site
