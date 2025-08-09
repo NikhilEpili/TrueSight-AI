@@ -2,20 +2,14 @@ fastapi==0.104.1
 uvicorn==0.24.0
 python-multipart==0.0.6
 python-dotenv==1.0.0
-<<<<<<< Updated upstream
 pydantic==2.7.1
-numpy>=1.24.3,<2.0  # Pin numpy to <2.0 for compatibility with torch/torchvision
+pydantic-settings==2.0.3
+numpy>=1.24.3,<2.0
 torch==2.0.1
 torchvision==0.15.2
-=======
-pydantic==2.4.2
-pydantic-settings==2.0.3
-numpy>=1.24.3
-torch>=2.1.0
->>>>>>> Stashed changes
 transformers>=4.34.0
 datasets>=2.16.0
-Pillow>=8.0.0,<10.0.0
+Pillow>=9.0.0,<10.0.0
 opencv-python>=4.8.1.78
 librosa>=0.10.1
 requests>=2.31.0
@@ -27,7 +21,6 @@ alembic>=1.12.1
 httpx>=0.25.0
 beautifulsoup4>=4.12.0
 aiohttp>=3.9.1
-pydantic-settings>=2.0.0
 scikit-learn>=1.3.0
 scipy>=1.11.0
 moviepy>=1.0.3
@@ -35,8 +28,6 @@ soundfile>=0.12.1
 timm>=0.9.0
 einops>=0.7.0
 kagglehub>=0.1.15
-# Optional: for Swin Transformer and DINOv2
-# xformers>=0.0.22
 
 # Testing dependencies
 pytest>=7.4.3

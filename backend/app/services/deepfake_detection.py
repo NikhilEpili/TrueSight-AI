@@ -81,14 +81,6 @@ class ImprovedDeepfakeDetectionService:
                 detail=f"File is required for {modality} analysis"
             )
         
-        # Check file size
-        max_size = getattr(settings, f"MAX_{modality.upper()}_SIZE", 50 * 1024 * 1024)
-        if file.size and file.size > max_size:
-            raise HTTPException(
-                status_code=400,
-                detail=f"File too large. Maximum size: {max_size // (1024*1024)}MB"
-            )
-        
         # Check content type
         supported_types = getattr(settings, f"SUPPORTED_{modality.upper()}_TYPES", [])
         if file.content_type and file.content_type not in supported_types:
@@ -107,6 +99,13 @@ class ImprovedDeepfakeDetectionService:
             
             # Write file content
             content = await file.read()
+            # Enforce size limit after reading
+            max_size = getattr(settings, f"MAX_{file.content_type.split('/')[0].upper()}_SIZE", None)
+            if max_size and len(content) > max_size:
+                raise HTTPException(
+                    status_code=400,
+                    detail=f"File too large. Maximum size exceeded"
+                )
             temp_file.write(content)
             temp_file.close()
             
@@ -175,9 +174,13 @@ class ImprovedDeepfakeDetectionService:
                 result = await self.analyze_video(file)
             logger.info(f"[DeepfakeDetectionService] Raw result: {result}")
             # Standardize response format
+            classification = result.get("classification")
+            if classification is None:
+                is_deepfake_flag = result.get("is_deepfake", False)
+                classification = "fake" if is_deepfake_flag else "real"
             response = {
                 "modality": modality,
-                "classification": result.get("classification", "unknown"),
+                "classification": classification,
                 "confidence": result.get("confidence", 0.0),
                 "is_deepfake": result.get("is_deepfake", False),
                 "details": result.get("details", {}),

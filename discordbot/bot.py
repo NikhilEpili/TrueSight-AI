@@ -32,12 +32,13 @@ async def verify_media(ctx):
     file_type = attachment.content_type
 
     # Determine endpoint based on file type
+    api_base = os.getenv('TRUESIGHT_API_URL', 'http://localhost:8000')
     if file_type.startswith('image/'):
-        endpoint = 'http://localhost:8000/api/detection/image'
+        endpoint = f'{api_base}/api/v1/detection/image'
     elif file_type.startswith('video/'):
-        endpoint = 'http://localhost:8000/api/detection/video'
+        endpoint = f'{api_base}/api/v1/detection/video'
     elif file_type.startswith('audio/'):
-        endpoint = 'http://localhost:8000/api/detection/audio'
+        endpoint = f'{api_base}/api/v1/detection/audio'
     else:
         await ctx.send('Unsupported file type. Please upload an image, video, or audio file.')
         return
@@ -100,8 +101,9 @@ async def verify_text(ctx, *, text: str):
     """
     try:
         async with aiohttp.ClientSession() as session:
+            api_base = os.getenv('TRUESIGHT_API_URL', 'http://localhost:8000')
             async with session.post(
-                'http://localhost:8000/api/news/text',
+                f'{api_base}/api/v1/news/text',
                 json={'text': text}
             ) as response:
                 if response.status != 200:

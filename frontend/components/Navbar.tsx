@@ -21,12 +21,7 @@ export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleAuthClick = async () => {
-    if (user) {
-      await logout();
-      router.push("/");
-    } else {
-      router.push("/auth");
-    }
+    router.push("/deepfake-detection");
   };
 
   const navLinks = [
@@ -69,7 +64,7 @@ export default function Navbar() {
               className="btn-primary text-sm px-4 py-2"
               onClick={handleAuthClick}
             >
-              {user ? "Logout" : "Login"}
+              Get Started
             </button>
 
             {/* Mobile menu button */}

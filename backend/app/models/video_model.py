@@ -1,5 +1,5 @@
 """
-Video deepfake detection using fine-tuned ViT model with frame aggregation.
+Video deepfake detection using fine-tuned  model with frame aggregation.
 """
 
 import numpy as np
@@ -25,7 +25,7 @@ except ImportError:
     logger.warning("opencv-python not available. Video analysis will not work.")
 
 class VideoDeepfakeDetector:
-    """Video deepfake detector using fine-tuned ViT model with frame aggregation."""
+    """Video deepfake detector using fine-tuned  model with frame aggregation."""
     
     def __init__(self):
         if not CV2_AVAILABLE:
@@ -46,10 +46,10 @@ class VideoDeepfakeDetector:
             import timm
             
             # Load the fine-tuned video model
-            logger.info("Loading fine-tuned video ViT model...")
+            logger.info("Loading fine-tuned video  model...")
             
             # Create the same model architecture as used in video training
-            backbone = timm.create_model('vit_base_patch16_224', pretrained=False, num_classes=0)  # No head
+            backbone = timm.create_model('_base_patch16_224', pretrained=False, num_classes=0)  # No head
             in_features = backbone.num_features
             
             class VideoClassifier(nn.Module):
@@ -77,13 +77,13 @@ class VideoDeepfakeDetector:
             else:
                 logger.warning(f"Fine-tuned video model not found at {model_path}, using pretrained model")
                 # Fallback to pretrained model
-                self.model = timm.create_model('vit_base_patch16_224', pretrained=True, num_classes=2)
+                self.model = timm.create_model('_base_patch16_224', pretrained=True, num_classes=2)
             
             self.model.to(self.device)
             self.model.eval()
             
             self.models_loaded = True
-            logger.info("Fine-tuned video ViT model loaded successfully")
+            logger.info("Fine-tuned video  model loaded successfully")
         except Exception as e:
             logger.error(f"Error loading fine-tuned video model: {str(e)}")
             self.models_loaded = False
@@ -135,7 +135,7 @@ class VideoDeepfakeDetector:
         
     async def analyze(self, file_path: str) -> Dict[str, Any]:
         """
-        Analyze video for deepfake detection using fine-tuned ViT model.
+        Analyze video for deepfake detection using fine-tuned  model.
         
         Args:
             file_path: Path to the video file
@@ -207,7 +207,7 @@ class VideoDeepfakeDetector:
                     "fake": float(fake_prob),
                     "real": float(real_prob)
                 },
-                "models_used": ["Fine-tuned Video ViT"],
+                "models_used": ["Fine-tuned Video "],
                 "details": {
                     "total_frames_extracted": len(frames),
                     "frames_analyzed": len(frames),

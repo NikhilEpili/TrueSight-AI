@@ -44,11 +44,7 @@ export default function Home() {
   ];
 
   const handleFeatureClick = (feature: any) => {
-    if (feature.protected && !user) {
-      router.push('/auth');
-    } else {
-      router.push(feature.href);
-    }
+    router.push(feature.href);
   };
 
   return (
@@ -119,9 +115,7 @@ export default function Home() {
                 </div>
                 <h3 className="text-xl font-semibold text-white mb-4">{feature.name}</h3>
                 <p className="text-gray-300 leading-relaxed">{feature.description}</p>
-                {feature.protected && !user && (
-                  <div className="mt-4 text-sm text-amber-400">Login required</div>
-                )}
+
               </div>
             ))}
           </div>

@@ -31,11 +31,6 @@ export default function DeepfakeDetection() {
   ];
 
   const handleCardClick = (href: string) => {
-    if (!user) {
-      alert('Please login first to access this feature');
-      router.push('/auth');
-      return;
-    }
     router.push(href);
   };
 

@@ -38,7 +38,7 @@ test_loader = DataLoader(test_dataset, batch_size=BATCH_SIZE, shuffle=False, num
 
 
 # Model: DINOv2 backbone + classification head
-backbone = timm.create_model('vit_base_patch16_224', pretrained=True, num_classes=0)  # No head
+backbone = timm.create_model('_base_patch16_224', pretrained=True, num_classes=0)  # No head
 in_features = backbone.num_features
 model = nn.Sequential(
     backbone,

@@ -1,5 +1,5 @@
 """
-Image deepfake detection using fine-tuned ViT model.
+Image deepfake detection using fine-tuned  model.
 """
 
 import torch
@@ -16,7 +16,7 @@ logger = logging.getLogger(__name__)
 
 class ImageDeepfakeDetector:
     """
-    Image deepfake detector using fine-tuned ViT model.
+    Image deepfake detector using fine-tuned  model.
     """
     
     def __init__(self):
@@ -28,15 +28,15 @@ class ImageDeepfakeDetector:
         self._setup_transforms()
     
     def _load_models(self):
-        """Load fine-tuned ViT model."""
+        """Load fine-tuned  model."""
         try:
             import timm
             
             # Load the fine-tuned model
-            logger.info("Loading fine-tuned ViT model...")
+            logger.info("Loading fine-tuned  model...")
             
             # Create the same model architecture as used in training
-            backbone = timm.create_model('vit_base_patch16_224', pretrained=False, num_classes=0)  # No head
+            backbone = timm.create_model('_base_patch16_224', pretrained=False, num_classes=0)  # No head
             in_features = backbone.num_features
             self.model = nn.Sequential(
                 backbone,
@@ -52,13 +52,13 @@ class ImageDeepfakeDetector:
             else:
                 logger.warning(f"Fine-tuned model not found at {model_path}, using pretrained model")
                 # Fallback to pretrained model
-                self.model = timm.create_model('vit_base_patch16_224', pretrained=True, num_classes=2)
+                self.model = timm.create_model('_base_patch16_224', pretrained=True, num_classes=2)
             
             self.model.to(self.device)
             self.model.eval()
             
             self.models_loaded = True
-            logger.info("Fine-tuned ViT model loaded successfully")
+            logger.info("Fine-tuned  model loaded successfully")
         except Exception as e:
             logger.error(f"Error loading fine-tuned model: {str(e)}")
             self.models_loaded = False
@@ -73,7 +73,7 @@ class ImageDeepfakeDetector:
         ])
     
     def _predict(self, image: Image.Image) -> torch.Tensor:
-        """Get prediction using fine-tuned ViT model."""
+        """Get prediction using fine-tuned  model."""
         if self.model is None:
             raise RuntimeError("Fine-tuned model not loaded")
             
@@ -90,7 +90,7 @@ class ImageDeepfakeDetector:
     
     async def analyze(self, image_path: str) -> Dict[str, Any]:
         """
-        Analyze image for deepfake detection using fine-tuned ViT model.
+        Analyze image for deepfake detection using fine-tuned  model.
         """
         try:
             if not self.models_loaded:
@@ -130,7 +130,7 @@ class ImageDeepfakeDetector:
                     "fake": float(fake_prob),
                     "real": float(real_prob)
                 },
-                "models_used": ["Fine-tuned ViT"],
+                "models_used": ["Fine-tuned "],
                 "intermediates": intermediates
             }
         except Exception as e:
