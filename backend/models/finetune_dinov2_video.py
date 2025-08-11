@@ -90,8 +90,8 @@ print(f"Test videos found: {len(test_dataset)}")
 train_loader = DataLoader(train_dataset, batch_size=BATCH_SIZE, shuffle=True, num_workers=0)
 test_loader = DataLoader(test_dataset, batch_size=BATCH_SIZE, shuffle=False, num_workers=0)
 
-# Model: ViT backbone + classification head
-backbone = timm.create_model('vit_base_patch16_224', pretrained=True, num_classes=0)  # No head
+# Model:  backbone + classification head
+backbone = timm.create_model('_base_patch16_224', pretrained=True, num_classes=0)  # No head
 in_features = backbone.num_features
 
 class VideoClassifier(nn.Module):

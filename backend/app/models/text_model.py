@@ -1,7 +1,3 @@
-"""
-Text deepfake detection using RoBERTa model for AI-generated text detection.
-"""
-
 import torch
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 from typing import Dict, Any
@@ -10,10 +6,7 @@ import logging
 logger = logging.getLogger(__name__)
 
 class TextDeepfakeDetector:
-    """
-    Text deepfake detector using RoBERTa model for AI-generated text detection.
-    """
-    
+   
     def __init__(self):
         self.model = None
         self.tokenizer = None
@@ -21,9 +14,8 @@ class TextDeepfakeDetector:
         self._load_model()
     
     def _load_model(self):
-        """Load the RoBERTa model for AI-generated text detection."""
+
         try:
-            # Using RoBERTa for synthetic/AI-generated text detection
             model_name = "roberta-base"
             self.tokenizer = AutoTokenizer.from_pretrained(model_name)
             self.model = AutoModelForSequenceClassification.from_pretrained(
@@ -38,15 +30,7 @@ class TextDeepfakeDetector:
             raise
     
     async def analyze(self, text: str) -> Dict[str, Any]:
-        """
-        Analyze text for AI-generated content.
-        
-        Args:
-            text: Input text to analyze
-            
-        Returns:
-            Dictionary containing analysis results
-        """
+
         try:
             if not text or len(text.strip()) == 0:
                 return {

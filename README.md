@@ -156,7 +156,7 @@ If you want to train your own models:
 
 ```bash
 cd backend
-python main_with_ml.py
+uvicorn app:app --host 0.0.0.0 --port 8000
 ```
 
 The API will be available at:
@@ -174,7 +174,7 @@ Returns server status.
 
 #### 2. Analyze Content
 ```bash
-POST /analyze
+POST /api/v1/analyze
 ```
 
 **Parameters:**
@@ -187,7 +187,7 @@ POST /analyze
 
 **Image Analysis:**
 ```bash
-curl -X POST "http://localhost:8000/analyze" \
+curl -X POST "http://localhost:8000/api/v1/analyze" \
   -H "Content-Type: multipart/form-data" \
   -F "modality=image" \
   -F "file=@path/to/image.jpg"
@@ -195,7 +195,7 @@ curl -X POST "http://localhost:8000/analyze" \
 
 **Video Analysis:**
 ```bash
-curl -X POST "http://localhost:8000/analyze" \
+curl -X POST "http://localhost:8000/api/v1/analyze" \
   -H "Content-Type: multipart/form-data" \
   -F "modality=video" \
   -F "file=@path/to/video.mp4"
@@ -203,7 +203,7 @@ curl -X POST "http://localhost:8000/analyze" \
 
 **Text Analysis:**
 ```bash
-curl -X POST "http://localhost:8000/analyze" \
+curl -X POST "http://localhost:8000/api/v1/analyze" \
   -H "Content-Type: multipart/form-data" \
   -F "modality=text" \
   -F "text=Your text content here"
@@ -269,13 +269,13 @@ If not found, it falls back to pre-trained models.
 ### Using curl
 ```bash
 # Test image analysis
-curl -X POST "http://localhost:8000/analyze" \
+curl -X POST "http://localhost:8000/api/v1/analyze" \
   -H "Content-Type: multipart/form-data" \
   -F "modality=image" \
   -F "file=@test_image.jpg"
 
 # Test video analysis
-curl -X POST "http://localhost:8000/analyze" \
+curl -X POST "http://localhost:8000/api/v1/analyze" \
   -H "Content-Type: multipart/form-data" \
   -F "modality=video" \
   -F "file=@test_video.mp4"
@@ -323,7 +323,7 @@ with open('test_image.jpg', 'rb') as f:
 ### Debug Mode
 Enable debug mode for detailed output:
 ```bash
-curl -X POST "http://localhost:8000/analyze" \
+curl -X POST "http://localhost:8000/api/v1/analyze" \
   -F "modality=image" \
   -F "file=@image.jpg" \
   -F "debug=true"

@@ -20,7 +20,6 @@ export default function RootLayout({
   
   // Pages where navbar should not be fixed
   const excludeFixedNavbar = [
-    '/auth',
     '/video-analysis',
     '/image-analysis',
     '/text-analysis',

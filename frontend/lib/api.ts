@@ -1,5 +1,5 @@
 // API service for TrueSight-AI backend
-const API_BASE_URL = 'http://localhost:8000';
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
 
 export interface AnalysisResult {
   modality: string;
@@ -19,7 +19,7 @@ export class APIService {
     formData.append('modality', 'text');
     formData.append('text', text);
 
-    const response = await fetch(`${API_BASE_URL}/analyze`, {
+    const response = await fetch(`${API_BASE_URL}/api/v1/analyze`, {
       method: 'POST',
       body: formData,
     });
@@ -36,7 +36,7 @@ export class APIService {
     formData.append('modality', 'image');
     formData.append('file', file);
 
-    const response = await fetch(`${API_BASE_URL}/analyze`, {
+    const response = await fetch(`${API_BASE_URL}/api/v1/analyze`, {
       method: 'POST',
       body: formData,
     });
@@ -53,7 +53,7 @@ export class APIService {
     formData.append('modality', 'audio');
     formData.append('file', file);
 
-    const response = await fetch(`${API_BASE_URL}/analyze`, {
+    const response = await fetch(`${API_BASE_URL}/api/v1/analyze`, {
       method: 'POST',
       body: formData,
     });
@@ -70,7 +70,7 @@ export class APIService {
     formData.append('modality', 'video');
     formData.append('file', file);
 
-    const response = await fetch(`${API_BASE_URL}/analyze`, {
+    const response = await fetch(`${API_BASE_URL}/api/v1/analyze`, {
       method: 'POST',
       body: formData,
     });
