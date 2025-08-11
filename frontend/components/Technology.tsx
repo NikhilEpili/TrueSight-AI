@@ -1,7 +1,6 @@
 'use client'
 import React, { useState } from 'react';
 import Image from 'next/image';
-import CurvedLoop from './CurvedLoop';
 
 const models = [
   'EfficientNetV2',
@@ -60,24 +59,23 @@ export default function Technology() {
           <Image src="/img3.png" alt="Technology Illustration" width={520} height={400} className="rounded-2xl shadow-xl" />
         </div>
       </div>
-      {/* Curved Loop Section */}
-      <div className="w-full bg-[#F5F6FA] py-16 overflow-hidden flex flex-col items-center border-t border-bordergray relative">
-        <div className="text-primary font-bold text-4xl mb-12 whitespace-nowrap font-poppins z-10">ACTIVE MODELS</div>
-        <div className="w-full h-40 relative">
-          <CurvedLoop 
-            marqueeText={models.join(" ✦ ")}
-            speed={1.5}
-            curveAmount={200}
-            direction="left"
-            interactive={true}
-            className="font-poppins"
-          />
+      {/* Marquee Section */}
+      <div className="w-full bg-primary py-6 overflow-hidden flex items-center border-t border-bordergray">
+        <div className="text-white font-bold text-lg mr-8 ml-8 whitespace-nowrap font-poppins">ACTIVE MODELS</div>
+        <div className="flex-1 overflow-x-hidden">
+          <div className="flex ts-marquee gap-8">
+            {models.concat(models).map((model, idx) => (
+              <div key={idx} className="backdrop-blur-md bg-white/20 rounded-xl px-4 py-2 border border-white/30 shadow-lg">
+                <span className="text-white text-lg font-semibold tracking-wide whitespace-nowrap font-rubik">{model}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
       {/* Since 2025 Section */}
       <div className="w-full flex flex-col md:flex-row items-center justify-between px-8 md:px-24 py-20">
         <div className="flex-1 flex flex-col items-start justify-center max-w-2xl">
-          <div className="uppercase text-text text-lg font-semibold mb-2 tracking-widest font-bevietnam">Our Technology</div>
+          <div className="uppercase text-text text-lg font-semibold mb-2 tracking-widest font-bevietnampro">Our Technology</div>
           <h2 className="text-5xl md:text-6xl font-bold text-primary mb-6 leading-tight font-poppins">Since 2025 leaders in deepfake detection</h2>
         </div>
         <div className="flex-1 flex items-center justify-center max-w-xl">
