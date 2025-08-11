@@ -1,6 +1,7 @@
 'use client';
 
-import { Download, Shield, Zap, Globe } from 'lucide-react';
+import { Download, Shield, Zap, Globe, ArrowLeft } from 'lucide-react';
+import Link from 'next/link';
 
 export default function Extension() {
   const features = [
@@ -37,67 +38,69 @@ export default function Extension() {
   ];
 
   return (
-    <div className="max-w-4xl mx-auto">
+    <div className="min-h-screen bg-lightgray py-12 px-4 relative">
+      {/* Back Button */}
+      <Link href="/" className="absolute top-6 right-6 z-10">
+        <button className="bg-primary hover:bg-[#23206F] text-white font-semibold rounded-lg px-4 py-2 flex items-center gap-2 transition-all duration-200 hover:scale-105 font-poppins">
+          <ArrowLeft size={18} />
+          Back to Home
+        </button>
+      </Link>
+      
       {/* Hero Section */}
       <div className="text-center mb-16">
-        <br></br>
-        <h1 className="text-7xl font-bold text-gray-900 text-7xl md:text-6xl font-semibold bg-gradient-to-r from-purple-400 to-indigo-400 bg-clip-text text-transparent mb-6 leading-tight animate-fade-in-2s leading-none pb-2 font-poppins mb-4 font-poppins bg-gradient-to-r from-purple-400 to-indigo-400">
-          TrueSight Browser Extension
-        </h1>
-        <p className="text-lg text-gray-600 dark:text-gray-300 mb-8 font-rubik">
+        <h1 className="text-5xl md:text-6xl font-extrabold mb-6 text-primary text-center font-synthnet">TrueSight Browser Extension</h1>
+        <p className="text-lg text-text mb-8 font-rubik">
           Verify information instantly while browsing with our powerful browser extension.
         </p>
-        <button className="font-semibold bg-indigo-600 text-white px-8 py-3 rounded-md hover:bg-indigo-500 flex items-center gap-2 mx-auto font-poppins">
+        <button className="font-semibold bg-primary text-white px-8 py-3 rounded-md hover:bg-[#23206F] flex items-center gap-2 mx-auto font-poppins">
           <Download size={20} />
           Download Extension
         </button>
       </div>
-
       {/* Features Grid */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16 ">
         {features.map((feature) => (
           <div
             key={feature.name}
-            className="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-sm  transition-shadow hover:scale-105"
+            className="p-6 bg-white rounded-lg shadow border border-bordergray transition duration-200 hover:bg-lightgray hover:shadow-xl hover:border-primary font-rubik hover:scale-110"
           >
-            <feature.icon className="h-8 w-8 text-indigo-600 dark:text-indigo-400 mb-4 hover:scale-105" />
-            <h3 className="font-bold text-lg font-semibold text-gray-900 dark:text-white mb-2 font-poppins">
+            <feature.icon className="h-8 w-8 text-primary mb-4" />
+            <h3 className="font-bold text-lg text-primary mb-2 font-poppins">
               {feature.name}
             </h3>
-            <p className="font-semibold text-gray-600 dark:text-gray-300 font-rubik">{feature.description}</p>
+            <p className="font-semibold text-text font-rubik">{feature.description}</p>
           </div>
         ))}
       </div>
-
       {/* Installation Steps */}
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-8 mb-16">
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-8 text-center font-poppins">
+      <div className="bg-white rounded-lg shadow border border-bordergray p-8 mb-16">
+        <h2 className="text-2xl font-bold text-primary mb-8 text-center font-poppins">
           Installation Guide
         </h2>
         <div className="space-y-8">
           {steps.map((step, index) => (
             <div key={step.title} className="flex items-start gap-4">
-              <div className="flex-shrink-0 w-8 h-8 bg-indigo-600 text-white rounded-full flex items-center justify-center font-semibold">
+              <div className="flex-shrink-0 w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center font-semibold">
                 {index + 1}
               </div>
               <div>
-                <h3 className="font-bold text-lg font-semibold text-gray-900 dark:text-white mb-2 font-poppins">
+                <h3 className="font-bold text-lg text-primary mb-2 font-poppins">
                   {step.title}
                 </h3>
-                <p className="font-semibold text-gray-600 dark:text-gray-300 font-rubik">{step.description}</p>
+                <p className="font-semibold text-text font-rubik">{step.description}</p>
               </div>
             </div>
           ))}
         </div>
       </div>
-
       {/* Demo Section */}
       <div className="text-center">
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-8">
+        <h2 className="text-2xl font-bold text-primary mb-8 font-poppins">
           See It in Action
         </h2>
-        <div className="bg-gray-100 dark:bg-gray-700 rounded-lg p-4 aspect-video flex items-center justify-center">
-          <p className="text-gray-600 dark:text-gray-300">Extension Demo Video/Screenshot</p>
+        <div className="bg-lightgray rounded-lg p-4 aspect-video flex items-center justify-center">
+          <p className="text-text font-rubik">Extension Demo Video/Screenshot</p>
         </div>
       </div>
     </div>

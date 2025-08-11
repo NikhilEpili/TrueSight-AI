@@ -103,59 +103,60 @@ const Auth: React.FC = () => {
   };
 
   return (
-    <div className={`truesight-auth-container${isRegister ? " right-panel-active" : ""}`}>
+    <div className={`truesight-auth-container${isRegister ? " right-panel-active" : ""} bg-lightgray`}>
       <div className="background-bubbles">
-        <div className="bubble bubble-purple" />
-        <div className="bubble bubble-blue delay-1s" />
-        <div className="bubble bubble-pink delay-2s" />
+        <div className="bubble bubble-primary" />
+        <div className="bubble bubble-accent delay-1s" />
+        <div className="bubble bubble-primary delay-2s" />
       </div>
       {/* REGISTER FORM */}
-      <div className="font-semibold form-container sign-up-container font-poppins">
+      <div className="font-semibold form-container sign-up-container font-synthnet bg-white">
         <form onSubmit={handleRegister} autoComplete="off">
-          <h2>Create Account</h2>
-          <input type="text" name="name" placeholder="Name" autoComplete="off" value={registerData.name} onChange={(e) => setRegisterData({ ...registerData, name: e.target.value })} required />
-          <input type="email" name="email" placeholder="Email" autoComplete="off" value={registerData.email} onChange={(e) => setRegisterData({ ...registerData, email: e.target.value })} required />
-          <input type="password" name="password" placeholder="Password" autoComplete="new-password" value={registerData.password} onChange={(e) => setRegisterData({ ...registerData, password: e.target.value })} required />
-          <input type="password" name="confirmPassword" placeholder="Confirm Password" autoComplete="new-password" value={registerData.confirmPassword} onChange={(e) => setRegisterData({ ...registerData, confirmPassword: e.target.value })} required />
-          <button type="submit">Register</button>
+          <h2 className="text-primary font-synthnet font-bold">Create Account</h2>
+          <input type="text" name="name" placeholder="Name" autoComplete="off" value={registerData.name} onChange={(e) => setRegisterData({ ...registerData, name: e.target.value })} required className="bg-lightgray border-primary text-text font-medium font-rubik" />
+          <input type="email" name="email" placeholder="Email" autoComplete="off" value={registerData.email} onChange={(e) => setRegisterData({ ...registerData, email: e.target.value })} required className="bg-lightgray border-primary text-text font-medium font-rubik" />
+          <input type="password" name="password" placeholder="Password" autoComplete="new-password" value={registerData.password} onChange={(e) => setRegisterData({ ...registerData, password: e.target.value })} required className="bg-lightgray border-primary text-text font-medium font-rubik" />
+          <input type="password" name="confirmPassword" placeholder="Confirm Password" autoComplete="new-password" value={registerData.confirmPassword} onChange={(e) => setRegisterData({ ...registerData, confirmPassword: e.target.value })} required className="bg-lightgray border-primary text-text font-medium font-rubik" />
+          <button type="submit" className="bg-primary hover:bg-[#23206F] text-white border-white">Register</button>
           <div className="social-buttons">
-            <button type="button" className="oauth-btn" onClick={() => handleOAuth("google")}>Register with Google</button>
-            <button type="button" className="oauth-btn" onClick={() => handleOAuth("github")}>Register with GitHub</button>
+            <button type="button" className="oauth-btn bg-primary hover:bg-[#23206F] text-white" onClick={() => handleOAuth("google")}>Register with Google</button>
+            <button type="button" className="oauth-btn bg-primary hover:bg-[#23206F] text-white" onClick={() => handleOAuth("github")}>Register with GitHub</button>
           </div>
         </form>
       </div>
       {/* LOGIN FORM */}
-      <div className="font-semibold form-container sign-in-container font-poppins">
+      <div className="font-semibold form-container sign-in-container font-synthnet bg-white">
         <form onSubmit={handleLogin} autoComplete="off">
-          <h2>Sign In</h2>
-          <input type="email" name="email" placeholder="Email" autoComplete="off" value={loginData.email} onChange={(e) => setLoginData({ ...loginData, email: e.target.value })} required />
-          <input type="password" name="password" placeholder="Password" autoComplete="new-password" value={loginData.password} onChange={(e) => setLoginData({ ...loginData, password: e.target.value })} required />
-          <button type="submit">Login</button>
+          <h2 className="text-primary font-synthnet ">Sign In</h2>
+          <input type="email" name="email" placeholder="Email" autoComplete="off" value={loginData.email} onChange={(e) => setLoginData({ ...loginData, email: e.target.value })} required className="bg-lightgray border-primary text-text font-medium font-rubik" />
+          <input type="password" name="password" placeholder="Password" autoComplete="new-password" value={loginData.password} onChange={(e) => setLoginData({ ...loginData, password: e.target.value })} required className="bg-lightgray border-primary text-text font-medium font-rubik" />
+          <button type="submit" className="bg-primary hover:bg-[#23206F] text-white">Login</button>
         </form>
       </div>
       {/* OVERLAY */}
-      <div className="overlay-container font-poppins">
-        <div className="overlay">
-          <div className=" font-semibold overlay-panel overlay-left font-poppins">
-            <h2>Welcome Back!</h2>
-            <p>To keep connected, login with your personal info</p>
+      <div className="overlay-container font-sans">
+        <div className="overlay bg-primary bg-opacity-90">
+          <div className=" font-semibold overlay-panel overlay-left font-sans">
+            <h2 className="text-white font-orbitron font-bold">Welcome Back!</h2>
             <br></br>
-            <button className="ghost" onClick={() => setIsRegister(false)}>Login</button>
+            <p className="text-white font-medium font-synthnet">To keep connected, login with your personal info</p>
+            <br></br>
+            <button className="ghost border-4 border-white text-white hover:bg-white hover:text-white" onClick={() => setIsRegister(false)}>Login</button>
           </div>
-          <div className="font-semibold overlay-panel overlay-right font-poppins ">
-            <h2>Hello, Friend!</h2>
-            <p>Enter your details to start your journey with us</p>
+          <div className="font-semibold overlay-panel overlay-right font-sans ">
+            <h2 className="text-white font-orbitron font-bold">Hello, Friend!</h2>
             <br></br>
-            <button className="ghost" onClick={() => setIsRegister(true)}>Register</button>
+            <p className="text-white font-medium font-synthnet">Enter your details to start your journey with us</p>
+            <br></br>
+            <button className="ghost border-4 border-white text-white hover:bg-white hover:text-white" onClick={() => setIsRegister(true)}>Register</button>
           </div>
         </div>
       </div>
       <style jsx>{`
         .truesight-auth-container {
-          background: rgba(30, 31, 43, 0.95);
-          backdrop-filter: blur(12px);
+          background: #F5F6FA;
           border-radius: 16px;
-          box-shadow: 0 14px 28px rgba(138, 132, 255, 0.08), 0 10px 10px rgba(138, 132, 255, 0.06);
+          box-shadow: 0 14px 28px rgba(59, 59, 255, 0.08), 0 10px 10px rgba(59, 59, 255, 0.06);
           position: relative;
           overflow: hidden;
           width: 768px;
@@ -165,7 +166,7 @@ const Auth: React.FC = () => {
           transition: all 0.6s cubic-bezier(.68,-0.55,.27,1.55);
           display: flex;
           z-index: 1;
-          animation: fadeInUp 1s cubic-bezier(.68,-0.55,.27,1.55);
+          animation: fadeInUp 1.5s cubic-bezier(.68,-0.55,.27,1.55);
         }
         .form-container {
           position: absolute;
@@ -179,10 +180,10 @@ const Auth: React.FC = () => {
           padding: 0 50px;
           text-align: center;
           width: 50%;
-          background: linear-gradient(135deg, #1E1F2B 0%, #2B2E4A 100%);
-          box-shadow: 0 4px 24px rgba(138, 132, 255, 0.06);
+          background: #fff;
+          box-shadow: 0 4px 24px rgba(59, 59, 255, 0.06);
           border-radius: 16px;
-          animation: slideInLeft 1s cubic-bezier(.68,-0.55,.27,1.55);
+          animation: slideInLeft 1.5s cubic-bezier(.68,-0.55,.27,1.55);
           z-index: 2;
         }
         form {
@@ -194,33 +195,33 @@ const Auth: React.FC = () => {
         input {
           padding: 12px;
           width: 100%;
-          background: #1E1F2B;
-          border: 1px solid #8A84FF;
+          background: #F5F6FA;
+          border: 1px solid #3B3BFF;
           border-radius: 5px;
           outline: none;
-          color: #FFFFFF;
+          color: #111111;
         }
         input::placeholder {
           color: #ADB5BD;
         }
         button {
           padding: 12px;
-          background-color: #8A84FF;
+          background-color: #3B3BFF;
           color: #fff;
           border: none;
           border-radius: 5px;
           font-weight: bold;
           cursor: pointer;
           transition: all 0.3s ease;
-          animation: fadeInUp 1.2s cubic-bezier(.68,-0.55,.27,1.55);
+          animation: fadeInUp 1.5s cubic-bezier(.68,-0.55,.27,1.55);
         }
         button:hover {
-          background-color: #B57EDC;
+          background-color: #23206F;
           transform: scale(1.02);
         }
         button.ghost {
           background-color: transparent;
-          border: 2px solid #FFFFFF;
+          border: 2px solid #3B3BFF;
         }
         .sign-in-container {
           left: 0;
@@ -250,7 +251,7 @@ const Auth: React.FC = () => {
           z-index: 100;
         }
         .overlay {
-          background: linear-gradient(to right, #8A84FF, #B57EDC);
+          background: #3B3BFF;
           color: #fff;
           position: relative;
           left: -100%;
@@ -304,16 +305,16 @@ const Auth: React.FC = () => {
         .oauth-btn {
           padding: 10px;
           font-size: 0.9rem;
-          background-color: #2B2E4A;
+          background-color: #FF3B3B;
           color: #FFFFFF;
-          border: 1px solid #8A84FF;
+          border: 1px solid #FF3B3B;
           border-radius: 5px;
           cursor: pointer;
           transition: all 0.2s ease;
-          animation: fadeInUp 1.2s cubic-bezier(.68,-0.55,.27,1.55);
+          animation: fadeInUp 1.5s cubic-bezier(.68,-0.55,.27,1.55);
         }
         .oauth-btn:hover {
-          background-color: #8A84FF;
+          background-color: #3B3BFF;
           transform: scale(1.02);
         }
         .background-bubbles {
@@ -330,26 +331,19 @@ const Auth: React.FC = () => {
           opacity: 0.12;
           z-index: -1;
         }
-        .bubble-purple {
+        .bubble-primary {
           top: 25%;
           left: 25%;
           width: 120px;
           height: 120px;
-          background: #8A84FF;
+          background: #3B3BFF;
         }
-        .bubble-blue {
+        .bubble-accent {
           bottom: 25%;
           right: 25%;
           width: 100px;
           height: 100px;
-          background: #B57EDC;
-        }
-        .bubble-pink {
-          bottom: 20%;
-          left: 35%;
-          width: 110px;
-          height: 110px;
-          background: #B57EDC;
+          background: #FF3B3B;
         }
         @keyframes fadeInUp {
           from { opacity: 0; transform: translateY(40px); }

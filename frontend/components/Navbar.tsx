@@ -2,16 +2,7 @@
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useAuth } from './Providers';
-
-function TrueSightLogo() {
-  return (
-    <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <ellipse cx="18" cy="18" rx="16" ry="10" fill="#a5b4fc" />
-      <ellipse cx="18" cy="18" rx="6" ry="6" fill="#6366f1" />
-      <path d="M15 18l2 2 4-4" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
+import Image from 'next/image';
 
 export default function Navbar() {
   const { user, logout } = useAuth();
@@ -27,28 +18,27 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="w-full border-b border-gray-300 bg-[#f3f4f6] shadow-sm">
+    <nav className="w-full bg-white shadow-md sticky top-0 z-50 border-b border-bordergray">
       <div className="max-w-7xl mx-auto px-4 sm:px-8 flex items-center justify-between h-20">
         {/* Logo and Brand */}
         <div className="flex items-center gap-3">
           <Link href="/" className="flex items-center gap-2 select-none">
-            <TrueSightLogo />
-            <span className="text-3xl font-extrabold bg-gradient-to-r from-indigo-400 to-purple-300 bg-clip-text text-transparent tracking-tight leading-none pb-1 font-orbitron" style={{display: 'inline-block'}}>
-              TrueSight.Ai
+            <span className="text-b-2 text-3xl font-extrabold tracking-tight leading-none pb-1 font-synthnet text-text">
+            ▶ TrueSight
             </span>
           </Link>
         </div>
         {/* Navigation Links */}
-        <div className="flex items-center gap-8 font-montserrat">
-          <Link href="/why-truesight" className="text-lg font-bold text-[#23206F] hover:text-indigo-500 transition transform hover:scale-105 font-rubik">Why-TrueSight</Link>
-          <Link href="/deepfake-detection" className="text-lg font-bold text-[#23206F] hover:text-indigo-500 transition transform hover:scale-105 font-rubik">Deepfake-Detection</Link>
-          <Link href="/technology" className="text-lg font-bold text-[#23206F] hover:text-indigo-500 transition transform hover:scale-105 font-rubik">Technology</Link>
-          <Link href="/contact" className="text-lg font-bold text-[#23206F] hover:text-indigo-500 transition transform hover:scale-105 font-rubik">Use-Case</Link>
+        <div className="flex items-center gap-8 font-sans">
+          <Link href="/why-truesight" className="text-lg font-bold text-text hover:text-primary border-b-2 border-transparent hover:border-primary transition-all duration-200 pb-1 font-synthnet">Why TrueSight</Link>
+          <Link href="/deepfake-detection" className="text-lg font-bold text-text hover:text-primary border-b-2 border-transparent hover:border-primary transition-all duration-200 pb-1 font-synthnet">Deepfake Detection</Link>
+          <Link href="/technology" className="text-lg font-bold text-text hover:text-primary border-b-2 border-transparent hover:border-primary transition-all duration-200 pb-1 font-synthnet">Technology</Link>
+          <Link href="/contact" className="text-lg font-bold text-text hover:text-primary border-b-2 border-transparent hover:border-primary transition-all duration-200 pb-1 font-synthnet">Use Case</Link>
         </div>
         {/* Auth Button */}
         <div>
           <button
-            className="ml-6 bg-indigo-400 hover:bg-indigo-600 text-white text-lg font-poppins font-semibold rounded-full px-6 py-2 transition shadow"
+            className="ml-6 bg-primary hover:bg-[#23206F] text-white text-lg font-semibold rounded-full px-6 py-2 transition shadow font-synthnet"
             onClick={handleAuthClick}
           >
             {user ? "Logout" : "Login"}
