@@ -1,7 +1,7 @@
 'use client';
 
 import type { Metadata } from 'next'
-import { Inter, Libre_Baskerville } from 'next/font/google'
+import { Inter } from 'next/font/google'
 import './globals.css'
 import Navbar from '@/components/Navbar'
 import { AuthProvider } from '@/components/Providers';
@@ -9,7 +9,6 @@ import { usePathname } from 'next/navigation'
 import Footer from '@/components/Footer';
 
 const inter = Inter({ subsets: ['latin'] })
-const libreBaskerville = Libre_Baskerville({ subsets: ['latin'], weight: ['400', '700'] })
 
 export default function RootLayout({
   children,
@@ -28,11 +27,11 @@ export default function RootLayout({
     '/audio-analysis'
   ];
   
-  const shouldShowFixedNavbar = !excludeFixedNavbar.includes(pathname);
+  const shouldShowFixedNavbar = pathname ? !excludeFixedNavbar.includes(pathname) : true;
 
   return (
-    <html lang="en">
-      <body className="bg-white text-text font-sans min-h-screen" style={{ fontFamily: 'Inter, Helvetica Neue, Arial, sans-serif' }}>
+    <html lang="en" className="scroll-smooth">
+      <body className={`${inter.className} min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white antialiased`}>
         <AuthProvider>
           <div className="min-h-screen flex flex-col bg-white">
             {shouldShowFixedNavbar ? (
@@ -42,17 +41,31 @@ export default function RootLayout({
             ) : (
               <Navbar />
             )}
+            
             {isRoot && (
-              <section className="flex flex-col flex-grow items-center justify-center text-center w-full min-h-[60vh] bg-white">
-                <h1 className="text-5xl md:text-8xl font-extrabold mb-4 text-text leading-tight pb-2 animate-slide-in-down 2s font-synthnet">
-                  Welcome to TrueSight.Ai
-                </h1>
-                <p className="text-2xl md:text-4xl font-semibold mb-4 text-text leading-snug animate-slide-in-down 2s font-synthnet">
-                  Beyond Sight, Towards Understanding !!
-                </p>
+              <section className="flex flex-col items-center justify-center text-center w-full min-h-[80vh] px-4">
+                <div className="max-w-4xl mx-auto space-y-8">
+                  <div className="space-y-6 animate-fade-in">
+                    <h1 className="text-5xl md:text-7xl font-bold gradient-text leading-tight">
+                      Welcome to TrueSight
+                    </h1>
+                    <p className="text-xl md:text-2xl text-gray-300 font-medium max-w-2xl mx-auto">
+                      Beyond Sight, Towards Understanding
+                    </p>
+                    <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8">
+                      <button className="btn-primary">
+                        Get Started
+                      </button>
+                      <button className="btn-secondary">
+                        Learn More
+                      </button>
+                    </div>
+                  </div>
+                </div>
               </section>
             )}
-            <main className="flex-1 w-full bg-white">
+            
+            <main className="flex-1 w-full">
               {children}
             </main>
           </div>

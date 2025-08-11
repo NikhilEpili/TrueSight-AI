@@ -10,8 +10,18 @@ export default function ImageAnalysis() {
         <h1 className="text-3xl md:text-4xl font-extrabold mb-4 text-primary text-center font-synthnet">Image Analysis</h1>
         <p className="font-medium text-lg text-text mb-8 text-center font-rubik">Upload your image to detect if it's AI-generated or authentic human content</p>
         <div className="w-full flex flex-col items-center mb-8">
-          <label htmlFor="image-upload" className="w-full flex flex-col items-center justify-center border-2 border-dashed border-primary rounded-xl py-8 cursor-pointer hover:border-accent transition">
-            <span className="text-lg text-primary font-semibold mb-2 font-rubik">Choose Image File +</span>
+          {previewUrl && (
+            <div className="w-full mb-4">
+              <img 
+                src={previewUrl} 
+                alt="Preview" 
+                className="w-full max-h-64 object-contain rounded-lg border-2 border-purple-400"
+              />
+            </div>
+          )}
+          
+          <label htmlFor="image-upload" className="w-full flex flex-col items-center justify-center border-2 border-dashed border-purple-400 rounded-xl py-8 cursor-pointer hover:border-indigo-400 transition">
+            <span className="text-lg text-indigo-300 font-semibold mb-2 font-rubik">Choose Image File +</span>
             <input id="image-upload" type="file" accept="image/*" className="hidden" />
           </label>
         </div>
